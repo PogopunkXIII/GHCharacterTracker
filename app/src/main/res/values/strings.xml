@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GHCharacterTracker</string>
+    <string name="minus_label">-</string>
+    <string name="plus_label">+</string>
+    <string name="zero_label">0</string>
+    <string name="health_label">Health</string>
+    <string name="exp_label">Exp</string>
+    <string name="money_label">Money</string>
+</resources>

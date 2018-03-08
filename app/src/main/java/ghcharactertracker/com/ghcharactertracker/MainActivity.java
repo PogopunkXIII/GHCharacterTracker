@@ -26,8 +26,12 @@ public class MainActivity extends ListActivity {
     }
 
     public void addItems(View v) {
-        characters.add("Clicked: " + clickCounter++);
-        adapter.notifyDataSetChanged();
+        Character character = new Character(ClassName.Brute);
+
+
+
+        //characters.add("Clicked: " + clickCounter++);
+        //adapter.notifyDataSetChanged();
     }
 
 }

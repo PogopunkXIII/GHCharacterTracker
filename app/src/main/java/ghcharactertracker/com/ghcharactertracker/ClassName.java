@@ -5,5 +5,14 @@ package ghcharactertracker.com.ghcharactertracker;
  */
 
 public enum ClassName {
-    Brute, Scoundrel, Mindthief, Spellweaver, Tinkerer, Cragheart
+    Brute, Scoundrel, Mindthief, Spellweaver, Tinkerer, Cragheart;
+
+    private final int value;
+    private ClassName(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return this.value;
+    }
 }

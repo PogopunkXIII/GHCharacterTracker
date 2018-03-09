@@ -1,8 +1,10 @@
 package ghcharactertracker.com.ghcharactertracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 /**
@@ -10,6 +12,8 @@ import android.widget.EditText;
  */
 
 public class ScenarioActivity extends AppCompatActivity {
+    public static final String SCENARIO_EXP = "com.ghcharactertracker.ghcharactertracker.SCENARIO_EXP";
+    public static final String SCENARIO_MONEY = "com.ghcharactertracker.ghcharactertracker.SCENARIO_MONEY";
     ScenarioModel scenario;
 
 
@@ -65,5 +69,33 @@ public class ScenarioActivity extends AppCompatActivity {
         }
 
         moneyText.setText(Integer.toString(scenario.getMoney()));
+    }
+
+    public void saveScenario(View v) {
+        EditText scenarioLvl = (EditText) findViewById(R.id.scenarioLevel);
+        CheckBox scenarioComp = (CheckBox) findViewById(R.id.scenarioCompleted);
+        //TODO: Throw a dialog telling the user to input a scenario level
+        if (scenarioLvl.getText().toString().isEmpty()) { return; }
+
+        boolean scenComp = scenarioComp.isChecked();
+        int scenLvl = Integer.parseInt(scenarioLvl.getText().toString());
+
+        //setting the level will calculate
+        scenario.setLevel(scenLvl);
+
+        Intent scenarioResult = new Intent();
+
+        scenarioResult.putExtra(SCENARIO_MONEY, scenario.getTotalMoney());
+
+        if (scenComp) {
+            scenarioResult.putExtra(SCENARIO_EXP, scenario.getTotalExp());
+        }
+        else {
+            scenarioResult.putExtra(SCENARIO_EXP, scenario.getExp());
+        }
+
+        setResult(0, scenarioResult);
+
+        this.finish();
     }
 }

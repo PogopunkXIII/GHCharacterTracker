@@ -74,7 +74,7 @@ public class Character implements Parcelable{
         out.writeInt(curExp);
         out.writeInt(money);
         //converts the enum of the class to the integer value
-        out.writeInt(charClass.name.getValue());
+        //out.writeInt(charClass.name.getValue());
     }
 
     public static final Parcelable.Creator<Character> CREATOR = new Parcelable.Creator<Character>() {
@@ -96,5 +96,13 @@ public class Character implements Parcelable{
         public Character[] newArray(int size) {
             return new Character[size];
         }
+    };
+
+    public void addExp(int scenExp) {
+        this.curExp += scenExp;
+    }
+
+    public void addMoney(int scenMoney) {
+        this.money += scenMoney;
     }
 }

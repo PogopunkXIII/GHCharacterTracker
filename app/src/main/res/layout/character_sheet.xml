@@ -15,7 +15,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintEnd_toStartOf="@+id/className"
+        app:layout_constraintEnd_toStartOf="@+id/classNameSpinner"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,10 +28,10 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/playerName"
         app:layout_constraintEnd_toStartOf="@+id/playerLevel"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/className" />
+        app:layout_constraintStart_toEndOf="@+id/classNameSpinner" />
 
     <Spinner
-        android:id="@+id/className"
+        android:id="@+id/classNameSpinner"
         android:layout_width="80dp"
         android:layout_height="45dp"
         android:layout_marginEnd="8dp"
@@ -152,6 +152,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:onClick="newScenario"
         android:text="@string/new_scenario_label"
         app:layout_constraintBaseline_toBaselineOf="@+id/playerCurrentMoney"
         app:layout_constraintEnd_toEndOf="parent"

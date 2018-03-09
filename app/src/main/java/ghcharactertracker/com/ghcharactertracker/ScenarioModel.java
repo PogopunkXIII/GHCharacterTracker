@@ -8,7 +8,8 @@ import android.widget.EditText;
  */
 
 public class ScenarioModel {
-    int health, exp, money = 0;
+    int level, health, exp, money = 0;
+    private int totalExp, bonusExp, totalMoney, moneyMultiplier = 0;
 
     public ScenarioModel(int health, int exp, int money) {
         this.health = health;
@@ -40,10 +41,13 @@ public class ScenarioModel {
 
     public void incMoney() {
         this.money++;
+        this.updateTotalMoney();
+
     }
 
     public void decMoney() {
         this.money--;
+        this.updateTotalMoney();
     }
 
     public int getHealth() {
@@ -62,5 +66,59 @@ public class ScenarioModel {
         return money;
     }
 
-    public void setMoney(int money) { this.money = money; }
+    public void setMoney(int money) {
+        this.money = money;
+        this.updateTotalMoney();
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+        this.bonusExp = this.getScenarioBonusExp(this.level);
+        this.moneyMultiplier = this.getScenarioMoneyMultiplier(this.level);
+        this.updateTotalMoney();
+        this.updateTotalExp();
+    }
+
+    private void updateTotalMoney() {
+        this.totalMoney = money * moneyMultiplier;
+    }
+
+    private void updateTotalExp() {
+        this.totalExp = exp + bonusExp;
+    }
+
+    public static int getScenarioMoneyMultiplier(int level) {
+        switch (level) {
+            default:
+            case 0:
+            case 1:
+                return 2;
+            case 2:
+            case 3:
+                return 3;
+            case 4:
+            case 5:
+                return 4;
+            case 6:
+                return 5;
+            case 7:
+                return 6;
+        }
+    }
+
+    public static int getScenarioBonusExp(int level) {
+        return (4 + (level * 2));
+    }
+
+    public int getTotalMoney() {
+        return totalMoney;
+    }
+
+    public int getTotalExp() {
+        return totalExp;
+    }
 }

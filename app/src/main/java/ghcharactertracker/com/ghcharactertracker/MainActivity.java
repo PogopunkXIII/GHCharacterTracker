@@ -1,6 +1,7 @@
 package ghcharactertracker.com.ghcharactertracker;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -26,7 +27,9 @@ public class MainActivity extends ListActivity {
     }
 
     public void addItems(View v) {
-        Character character = new Character(ClassName.Brute);
+        //Character character = new Character(new CharClass(ClassName.Brute));
+        Intent characterIntent = new Intent(this, CharacterActivity.class);
+        startActivity(characterIntent);
 
 
 

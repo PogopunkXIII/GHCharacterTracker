@@ -20,13 +20,15 @@ public class ScenarioActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scenario_tracker);
-        scenario = new ScenarioModel(0, 0 ,0);
+
+        Intent intent = getIntent();
+        int maxHealth = intent.getIntExtra(CharacterActivity.MAX_HEALTH, 0);
+
+        scenario = new ScenarioModel(maxHealth, 0 ,0);
+        updateHealthUI();
     }
 
     public void changeHealth(View v) {
-        EditText healthText = (EditText) findViewById(R.id.scenarioHealth);
-        scenario.setHealth(Integer.parseInt(healthText.getText().toString()));
-
         switch(v.getId()){
             case R.id.healthAdd:
                 scenario.incHealth();
@@ -36,13 +38,10 @@ public class ScenarioActivity extends AppCompatActivity {
                 break;
         }
 
-        healthText.setText(Integer.toString(scenario.getHealth()));
+        updateHealthUI();
     }
 
     public void changeExp(View v) {
-        EditText expText = (EditText) findViewById(R.id.scenarioExp);
-        scenario.setExp(Integer.parseInt(expText.getText().toString()));
-
         switch(v.getId()){
             case R.id.expAdd:
                 scenario.incExp();
@@ -52,13 +51,10 @@ public class ScenarioActivity extends AppCompatActivity {
                 break;
         }
 
-        expText.setText(Integer.toString(scenario.getExp()));
+        updateExpUI();
     }
 
     public void changeMoney(View v) {
-        EditText moneyText = (EditText) findViewById(R.id.scenarioMoney);
-        scenario.setMoney(Integer.parseInt(moneyText.getText().toString()));
-
         switch(v.getId()){
             case R.id.moneyAdd:
                 scenario.incMoney();
@@ -67,6 +63,24 @@ public class ScenarioActivity extends AppCompatActivity {
                 scenario.decMoney();
                 break;
         }
+
+        updateMoneyUI();
+    }
+
+    private void updateHealthUI() {
+        EditText healthText = (EditText) findViewById(R.id.scenarioHealth);
+
+        healthText.setText(Integer.toString(scenario.getHealth()));
+    }
+
+    private void updateExpUI() {
+        EditText expText = (EditText) findViewById(R.id.scenarioExp);
+
+        expText.setText(Integer.toString(scenario.getExp()));
+    }
+
+    private void updateMoneyUI() {
+        EditText moneyText = (EditText) findViewById(R.id.scenarioMoney);
 
         moneyText.setText(Integer.toString(scenario.getMoney()));
     }

@@ -21,7 +21,7 @@ public class CharacterActivity extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.character_sheet);
 
         Spinner classNameSpinner = (Spinner) findViewById(R.id.classNameSpinner);
         classNameSpinner.setAdapter(new ArrayAdapter<ClassName>(this,
@@ -29,8 +29,6 @@ public class CharacterActivity extends AppCompatActivity {
                 ClassName.values()));
 
         player = new Character(new CharClass(ClassName.Brute));
-
-
     }
 
     private void unpackScenarioData(Intent data) {

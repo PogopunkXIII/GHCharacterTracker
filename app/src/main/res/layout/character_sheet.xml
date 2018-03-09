@@ -8,15 +8,18 @@
 
     <EditText
         android:id="@+id/playerName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toStartOf="@+id/classNameSpinner"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:text="@string/name_label"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/levelLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,45 +29,45 @@
         android:layout_height="wrap_content"
         android:text="@string/level_label"
         app:layout_constraintBaseline_toBaselineOf="@+id/playerName"
-        app:layout_constraintEnd_toStartOf="@+id/playerLevel"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/classNameSpinner" />
+        app:layout_constraintEnd_toStartOf="@+id/playerLevel" />
 
     <Spinner
         android:id="@+id/classNameSpinner"
-        android:layout_width="80dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="18dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/levelLabel"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/playerName"
-        tools:layout_editor_absoluteY="18dp" />
+        android:layout_marginTop="8dp"
+        android:dropDownWidth="match_parent"
+        app:layout_constraintEnd_toEndOf="@+id/playerName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerName" />
 
     <EditText
         android:id="@+id/playerLevel"
-        android:layout_width="54dp"
-        android:layout_height="0dp"
+        android:layout_width="82dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:text="@string/zero_label"
+        android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/playerName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/levelLabel" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/maxHealthLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:text="@string/max_health_label"
         app:layout_constraintEnd_toStartOf="@+id/playerMaxHealth"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerName" />
+        app:layout_constraintTop_toBottomOf="@+id/classNameSpinner" />
 
     <EditText
         android:id="@+id/playerMaxHealth"
@@ -73,9 +76,15 @@
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:text="@string/zero_label"
+        android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/maxHealthLabel"
         app:layout_constraintEnd_toStartOf="@+id/xpLabel"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/maxHealthLabel" />
 
     <TextView
@@ -95,6 +104,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:text="@string/zero_label"
+        android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/maxHealthLabel"
         app:layout_constraintEnd_toStartOf="@+id/textView7"
         app:layout_constraintHorizontal_bias="0.5"
@@ -117,6 +130,9 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="number"
+        android:singleLine="true"
+        android:text="@string/zero_label"
+        android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/maxHealthLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -141,6 +157,8 @@
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="number"
+        android:text="@string/zero_label"
+        android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView8"
         app:layout_constraintEnd_toStartOf="@+id/newScenario"
         app:layout_constraintHorizontal_bias="0.5"

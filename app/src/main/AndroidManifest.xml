@@ -17,6 +17,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ScenarioActivity"
+            android:parentActivityName=".CharacterActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CharacterActivity"/>
+        </activity>
+        <activity android:name=".CharacterActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -12,8 +12,10 @@ public class CharClass {
     public CharClass(ClassName name) {
         this.name = name;
         healthVals = CharClass.getHealthValues(this.name);
-        lvlUpVals = new int[]{8, 9, 11, 12, 14, 15, 17, 18};
+        lvlUpVals = CharClass.getLvlUpValsValues(this.name);
     }
+
+    public ClassName getClassName() { return name; }
 
     public static int[] getHealthValues(ClassName name) {
         int[] vals = null;
@@ -21,15 +23,15 @@ public class CharClass {
         switch(name) {
             case Brute:
             case Cragheart:
-                vals = new int[]{10, 12, 14, 16, 18, 20, 22, 24, 26};
+                vals = new int[]{0, 10, 12, 14, 16, 18, 20, 22, 24, 26};
                 break;
             case Scoundrel:
             case Tinkerer:
-                vals = new int[]{8, 9, 11, 12, 14, 15, 17, 18, 20};
+                vals = new int[]{0, 8, 9, 11, 12, 14, 15, 17, 18, 20};
                 break;
             case Mindthief:
             case Spellweaver:
-                vals = new int[]{6, 7, 8, 9, 10, 11, 12, 13, 14};
+                vals = new int[]{0, 6, 7, 8, 9, 10, 11, 12, 13, 14};
                 break;
         }
 

@@ -7,7 +7,7 @@ package ghcharactertracker.com.ghcharactertracker;
 public enum ClassName {
     Brute("Brute"),
     Scoundrel("Scoundrel"),
-    Mindthief("Minethief"),
+    Mindthief("Mindthief"),
     Spellweaver("Spellweaver"),
     Tinkerer("Tinkerer"),
     Cragheart("Cragheart");

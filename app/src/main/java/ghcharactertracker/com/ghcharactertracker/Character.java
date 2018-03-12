@@ -9,17 +9,18 @@ import android.os.Parcelable;
  */
 
 public class Character implements Parcelable{
-
+    String playerName;
     int level, maxHealth, curExp, nextLevelExp, money;
     CharClass charClass;
 
     public Character(CharClass charClass) {
+        this.playerName = "";
         this.charClass = charClass;
-        this.level = 1;
+        this.level = 0;
         this.curExp = 0;
-        this.money = 30;
-        this.maxHealth = this.charClass.getMaxHealth(this.level);
-        this.nextLevelExp = this.charClass.getLvlUpVal(this.level);
+        this.money = 0;
+        this.maxHealth = 0;
+        this.nextLevelExp = 0;
     }
     public int getLevel() {
         return level;
@@ -62,6 +63,18 @@ public class Character implements Parcelable{
     public void setMoney(int money) {
         this.money = money;
     }
+
+    public void setClassName(ClassName className) {
+        charClass = new CharClass(className);
+        this.nextLevelExp = charClass.getLvlUpVal(this.level);
+        this.maxHealth = charClass.getMaxHealth(this.level);
+    }
+
+    public ClassName getClassName() { return charClass.getClassName(); }
+
+    public String getPlayerName() { return playerName; }
+
+    public void setPlayerName(String playerName) { this.playerName = playerName; }
 
     @Override
     public int describeContents() {

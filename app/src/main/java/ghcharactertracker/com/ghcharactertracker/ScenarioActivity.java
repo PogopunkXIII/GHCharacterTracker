@@ -1,5 +1,6 @@
 package ghcharactertracker.com.ghcharactertracker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -108,7 +109,7 @@ public class ScenarioActivity extends AppCompatActivity {
             scenarioResult.putExtra(SCENARIO_EXP, scenario.getExp());
         }
 
-        setResult(0, scenarioResult);
+        setResult(Activity.RESULT_OK, scenarioResult);
 
         this.finish();
     }

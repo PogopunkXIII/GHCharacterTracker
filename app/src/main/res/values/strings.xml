@@ -13,7 +13,7 @@
     <string name="slash_label">\\</string>
     <string name="new_scenario_label">New Scenario</string>
     <string name="total_money_label">Money</string>
-    <string name="completed_label">Scenario Completed?</string>
+    <string name="completed_label">Successfully Completed?</string>
     <string name="complete_label">Done</string>
     <string name="scenario_level_label">Scenario Level</string>
     <string name="name_label">Name</string>

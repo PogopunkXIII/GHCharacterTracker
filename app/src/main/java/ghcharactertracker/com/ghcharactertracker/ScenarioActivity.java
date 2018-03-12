@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by jesse.mailhot on 3/6/2018.
@@ -86,11 +87,18 @@ public class ScenarioActivity extends AppCompatActivity {
         moneyText.setText(Integer.toString(scenario.getMoney()));
     }
 
-    public void saveScenario(View v) {
+    public void scenarioCompleted(View v) {
+        saveScenarioData(true);
+    }
+
+    private void saveScenarioData(boolean scenarioCompleted) {
         EditText scenarioLvl = (EditText) findViewById(R.id.scenarioLevel);
         CheckBox scenarioComp = (CheckBox) findViewById(R.id.scenarioCompleted);
         //TODO: Throw a dialog telling the user to input a scenario level
-        if (scenarioLvl.getText().toString().isEmpty()) { return; }
+        if (scenarioLvl.getText().toString().isEmpty()) {
+            //Toast.makeText(this,"Thanks for using application!!", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         boolean scenComp = scenarioComp.isChecked();
         int scenLvl = Integer.parseInt(scenarioLvl.getText().toString());
@@ -112,5 +120,11 @@ public class ScenarioActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK, scenarioResult);
 
         this.finish();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        saveScenarioData(false);
     }
 }

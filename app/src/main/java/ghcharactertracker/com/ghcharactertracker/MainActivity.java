@@ -1,5 +1,6 @@
 package ghcharactertracker.com.ghcharactertracker;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +10,9 @@ import android.widget.ArrayAdapter;
 import java.util.ArrayList;
 
 public class MainActivity extends ListActivity {
-    ArrayList<String> characters = new ArrayList<String>();
+    private static final int CHARACTER_REQUEST_CODE = 0;
+    ArrayList<String> characterNames = new ArrayList<>();
+    ArrayList<Character> characters = new ArrayList<>();
 
     ArrayAdapter<String> adapter;
 
@@ -22,19 +25,33 @@ public class MainActivity extends ListActivity {
 
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
-                characters);
+                characterNames);
         setListAdapter(adapter);
     }
 
     public void addItems(View v) {
         //Character character = new Character(new CharClass(ClassName.Brute));
         Intent characterIntent = new Intent(this, CharacterActivity.class);
-        startActivity(characterIntent);
-
-
+        startActivityForResult(characterIntent, CHARACTER_REQUEST_CODE);
 
         //characters.add("Clicked: " + clickCounter++);
         //adapter.notifyDataSetChanged();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case CHARACTER_REQUEST_CODE:
+                if (resultCode == Activity.RESULT_OK) {
+                    getCharacter(data);
+                }
+                break;
+        }
+    }
+
+    private void getCharacter(Intent characterResult) {
+
+    }
+
 
 }

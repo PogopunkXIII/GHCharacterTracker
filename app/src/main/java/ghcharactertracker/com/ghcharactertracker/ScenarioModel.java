@@ -20,7 +20,7 @@ public class ScenarioModel {
     public ScenarioModel() {
         this.health = 0;
         this.exp = 0;
-        this.money =0;
+        this.money = 0;
     }
 
     public void incHealth() {

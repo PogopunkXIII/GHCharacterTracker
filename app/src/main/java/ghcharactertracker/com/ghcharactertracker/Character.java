@@ -13,6 +13,8 @@ public class Character implements Parcelable{
     int level, maxHealth, curExp, nextLevelExp, money;
     CharClass charClass;
 
+    ScenarioModel scenario;
+
     public Character(CharClass charClass) {
         this.playerName = "";
         this.charClass = charClass;
@@ -83,6 +85,8 @@ public class Character implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel out, int flags) {
+        out.writeString(playerName);
+        out.writeString(charClass.name.toString());
         out.writeInt(level);
         out.writeInt(curExp);
         out.writeInt(money);

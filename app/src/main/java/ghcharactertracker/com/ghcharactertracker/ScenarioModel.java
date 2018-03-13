@@ -8,19 +8,19 @@ import android.widget.EditText;
  */
 
 public class ScenarioModel {
-    int level, health, exp, money = 0;
+    int level, health, exp, moneyTokens = 0;
     private int totalExp, bonusExp, totalMoney, moneyMultiplier = 0;
 
     public ScenarioModel(int health, int exp, int money) {
         this.health = health;
         this.exp = exp;
-        this.money = money;
+        this.moneyTokens = money;
     }
 
     public ScenarioModel() {
         this.health = 0;
         this.exp = 0;
-        this.money = 0;
+        this.moneyTokens = 0;
     }
 
     public void incHealth() {
@@ -40,13 +40,13 @@ public class ScenarioModel {
     }
 
     public void incMoney() {
-        this.money++;
+        this.moneyTokens++;
         this.updateTotalMoney();
 
     }
 
     public void decMoney() {
-        this.money--;
+        this.moneyTokens--;
         this.updateTotalMoney();
     }
 
@@ -62,12 +62,12 @@ public class ScenarioModel {
 
     public void setExp(int exp) { this.exp = exp; }
 
-    public int getMoney() {
-        return money;
+    public int getMoneyTokens() {
+        return moneyTokens;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
+    public void setMoneyTokens(int money) {
+        this.moneyTokens = money;
         this.updateTotalMoney();
     }
 
@@ -84,7 +84,7 @@ public class ScenarioModel {
     }
 
     private void updateTotalMoney() {
-        this.totalMoney = money * moneyMultiplier;
+        this.totalMoney = moneyTokens * moneyMultiplier;
     }
 
     private void updateTotalExp() {

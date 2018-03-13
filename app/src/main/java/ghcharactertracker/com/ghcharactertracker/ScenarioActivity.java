@@ -16,6 +16,8 @@ import android.widget.Toast;
 public class ScenarioActivity extends AppCompatActivity {
     public static final String SCENARIO_EXP = "com.ghcharactertracker.ghcharactertracker.SCENARIO_EXP";
     public static final String SCENARIO_MONEY = "com.ghcharactertracker.ghcharactertracker.SCENARIO_MONEY";
+    public static final String SCENARIO_LEVEL = "com.ghcharactertracker.ghcharactertracker.SCENARIO_LEVEL";
+    public static final String SCENARIO_COMPLETE = "com.ghcharactertracker.ghcharactertracker.SCENARIO_LEVEL";
     ScenarioModel scenario;
 
 
@@ -84,7 +86,7 @@ public class ScenarioActivity extends AppCompatActivity {
     private void updateMoneyUI() {
         EditText moneyText = (EditText) findViewById(R.id.scenarioMoney);
 
-        moneyText.setText(Integer.toString(scenario.getMoney()));
+        moneyText.setText(Integer.toString(scenario.getMoneyTokens()));
     }
 
     public void scenarioCompleted(View v) {
@@ -96,7 +98,7 @@ public class ScenarioActivity extends AppCompatActivity {
         CheckBox scenarioComp = (CheckBox) findViewById(R.id.scenarioCompleted);
         //TODO: Throw a dialog telling the user to input a scenario level
         if (scenarioLvl.getText().toString().isEmpty()) {
-            //Toast.makeText(this,"Thanks for using application!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Thanks for using application!!", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -108,7 +110,16 @@ public class ScenarioActivity extends AppCompatActivity {
 
         Intent scenarioResult = new Intent();
 
-        scenarioResult.putExtra(SCENARIO_MONEY, scenario.getTotalMoney());
+        scenarioResult.putExtra(SCENARIO_COMPLETE, scenComp);
+        scenarioResult.putExtra(SCENARIO_LEVEL, scenario.getLevel());
+
+        if (scenComp) {
+            scenarioResult.putExtra(SCENARIO_MONEY, scenario.getTotalMoney());
+        }
+        else {
+            scenarioResult.putExtra(SCENARIO_MONEY, scenario.getMoneyTokens());
+        }
+
 
         if (scenComp) {
             scenarioResult.putExtra(SCENARIO_EXP, scenario.getTotalExp());

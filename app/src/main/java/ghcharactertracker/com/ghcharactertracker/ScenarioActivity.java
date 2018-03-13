@@ -17,7 +17,7 @@ public class ScenarioActivity extends AppCompatActivity {
     public static final String SCENARIO_EXP = "com.ghcharactertracker.ghcharactertracker.SCENARIO_EXP";
     public static final String SCENARIO_MONEY = "com.ghcharactertracker.ghcharactertracker.SCENARIO_MONEY";
     public static final String SCENARIO_LEVEL = "com.ghcharactertracker.ghcharactertracker.SCENARIO_LEVEL";
-    public static final String SCENARIO_COMPLETE = "com.ghcharactertracker.ghcharactertracker.SCENARIO_LEVEL";
+    public static final String SCENARIO_COMPLETE = "com.ghcharactertracker.ghcharactertracker.SCENARIO_COMPLETE";
     ScenarioModel scenario;
 
 
@@ -27,8 +27,12 @@ public class ScenarioActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int maxHealth = intent.getIntExtra(CharacterActivity.MAX_HEALTH, 0);
+        int scenLevel = intent.getIntExtra(SCENARIO_LEVEL, 0);
+        int scenExp = intent.getIntExtra(SCENARIO_EXP, 0);
+        int scenMoneyTokens = intent.getIntExtra(SCENARIO_MONEY, 0);
 
-        scenario = new ScenarioModel(maxHealth, 0 ,0);
+        scenario = new ScenarioModel(maxHealth, scenExp,scenMoneyTokens);
+        scenario.setLevel(scenLevel);
         updateHealthUI();
     }
 
@@ -95,14 +99,14 @@ public class ScenarioActivity extends AppCompatActivity {
 
     private void saveScenarioData(boolean scenarioCompleted) {
         EditText scenarioLvl = (EditText) findViewById(R.id.scenarioLevel);
-        CheckBox scenarioComp = (CheckBox) findViewById(R.id.scenarioCompleted);
+        CheckBox scenarioSuccessful = (CheckBox) findViewById(R.id.scenarioSuccessful);
         //TODO: Throw a dialog telling the user to input a scenario level
         if (scenarioLvl.getText().toString().isEmpty()) {
-            Toast.makeText(this,"Thanks for using application!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Please enter a scenario Level", Toast.LENGTH_LONG).show();
             return;
         }
 
-        boolean scenComp = scenarioComp.isChecked();
+        boolean scenSucc = scenarioSuccessful.isChecked();
         int scenLvl = Integer.parseInt(scenarioLvl.getText().toString());
 
         //setting the level will calculate
@@ -110,10 +114,10 @@ public class ScenarioActivity extends AppCompatActivity {
 
         Intent scenarioResult = new Intent();
 
-        scenarioResult.putExtra(SCENARIO_COMPLETE, scenComp);
+        scenarioResult.putExtra(SCENARIO_COMPLETE, scenarioCompleted);
         scenarioResult.putExtra(SCENARIO_LEVEL, scenario.getLevel());
 
-        if (scenComp) {
+        if (scenSucc) {
             scenarioResult.putExtra(SCENARIO_MONEY, scenario.getTotalMoney());
         }
         else {
@@ -121,7 +125,7 @@ public class ScenarioActivity extends AppCompatActivity {
         }
 
 
-        if (scenComp) {
+        if (scenSucc) {
             scenarioResult.putExtra(SCENARIO_EXP, scenario.getTotalExp());
         }
         else {

@@ -26,10 +26,10 @@ into the character sheet.
 ## Planned Features:
 
 ### In Progress:
-- Scenario data retained until scenario is marked completed (Done button pressed)
+~~- Scenario data retained until scenario is marked completed (Done button pressed)~~
+- Adding Characters to list in the Main Activity
 
 ### Up Next:
-- Adding Characters to list in the Main Activity
 - Persistent memory for characters (and by extension, unfinished scenarios for those characters) through app close/reopen
 - Expand Character sheet to track perks
 - Expand Character sheet to track Bonus Perk checks

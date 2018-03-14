@@ -47,14 +47,16 @@
       <file leaf-file-name="CharacterActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/CharacterActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1229">
-              <caret line="147" column="58" lean-forward="true" selection-start-line="147" selection-start-column="58" selection-end-line="147" selection-end-column="58" />
+            <state relative-caret-position="1203">
+              <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
               <folding>
                 <element signature="method#updateModelClassName#0;class#CharacterActivity#0" expanded="false" />
                 <element signature="method#updateModelPlayerNextLvlExp#0;class#CharacterActivity#0" expanded="false" />
                 <element signature="method#updateModelPlayerMoney#0;class#CharacterActivity#0" expanded="false" />
                 <element signature="method#updateUI#0;class#CharacterActivity#0" expanded="false" />
+                <element signature="method#unpackCompleteScenario#0;class#CharacterActivity#0" expanded="false" />
                 <element signature="method#addSpinnerWatcher#0;class#CharacterActivity#0" expanded="false" />
+                <element signature="method#addTextWatchers#0;class#CharacterActivity#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -63,14 +65,17 @@
       <file leaf-file-name="ScenarioActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ScenarioActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="34" column="37" lean-forward="false" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+            <state relative-caret-position="869">
+              <caret line="53" column="26" lean-forward="true" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2942#2943#0" expanded="true" />
-                <element signature="e#2980#2981#0" expanded="true" />
-                <element signature="e#4426#4427#0" expanded="true" />
-                <element signature="e#4465#4466#0" expanded="true" />
+                <element signature="method#updateHealthUI#0;class#ScenarioActivity#0" expanded="false" />
+                <element signature="method#updateExpUI#0;class#ScenarioActivity#0" expanded="false" />
+                <element signature="method#updateMoneyUI#0;class#ScenarioActivity#0" expanded="false" />
+                <element signature="e#3418#3419#0" expanded="true" />
+                <element signature="e#3456#3457#0" expanded="true" />
+                <element signature="e#4975#4976#0" expanded="true" />
+                <element signature="e#5014#5015#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,8 +84,8 @@
       <file leaf-file-name="ScenarioModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ScenarioModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="82" column="30" lean-forward="false" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
+            <state relative-caret-position="1050">
+              <caret line="81" column="33" lean-forward="false" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -112,6 +117,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="character_sheet.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/character_sheet.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -128,6 +146,7 @@
       <find>int[]</find>
       <find>ue</find>
       <find>onAc</find>
+      <find>public static final String SCENARIO_LEVEL = &quot;com.ghcharactertracker.ghcharactertracker.SCENARIO_LEVEL&quot;;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2103,7 +2122,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520968538137" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521055483163" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2151,7 +2170,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520968538137" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521055483163" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2334,7 +2353,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520968538139" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521055483164" />
       </method>
     </configuration>
     <list size="1">
@@ -2452,12 +2471,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/CharacterActivity.java</url>
-          <line>110</line>
+          <line>120</line>
           <properties />
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/CharacterActivity.java</url>
+          <line>141</line>
+          <properties />
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="11" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2481,7 +2506,9 @@
             <element signature="method#updateModelPlayerNextLvlExp#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#updateModelPlayerMoney#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#updateUI#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="method#unpackCompleteScenario#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#addSpinnerWatcher#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="method#addTextWatchers#0;class#CharacterActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2556,18 +2583,10 @@
         <state relative-caret-position="765">
           <caret line="64" column="58" lean-forward="false" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
           <folding>
-            <element signature="e#1438#1439#0" expanded="false" />
-            <element signature="e#1466#1467#0" expanded="false" />
-            <element signature="e#1780#1781#0" expanded="false" />
-            <element signature="e#1843#1844#0" expanded="false" />
-            <element signature="e#1880#1881#0" expanded="false" />
-            <element signature="e#1926#1927#0" expanded="false" />
-            <element signature="e#2397#2398#0" expanded="false" />
-            <element signature="e#2437#2438#0" expanded="false" />
-            <element signature="e#2471#2472#0" expanded="false" />
-            <element signature="e#2504#2505#0" expanded="false" />
-            <element signature="e#2536#2537#0" expanded="false" />
-            <element signature="e#2567#2568#0" expanded="false" />
+            <element signature="e#1442#1443#0" expanded="false" />
+            <element signature="e#1470#1471#0" expanded="false" />
+            <element signature="e#1786#1787#0" expanded="false" />
+            <element signature="e#1850#1851#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2656,18 +2675,10 @@
         <state relative-caret-position="765">
           <caret line="64" column="58" lean-forward="false" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
           <folding>
-            <element signature="e#1438#1439#0" expanded="false" />
-            <element signature="e#1466#1467#0" expanded="false" />
-            <element signature="e#1780#1781#0" expanded="false" />
-            <element signature="e#1843#1844#0" expanded="false" />
-            <element signature="e#1880#1881#0" expanded="false" />
-            <element signature="e#1926#1927#0" expanded="false" />
-            <element signature="e#2397#2398#0" expanded="false" />
-            <element signature="e#2437#2438#0" expanded="false" />
-            <element signature="e#2471#2472#0" expanded="false" />
-            <element signature="e#2504#2505#0" expanded="false" />
-            <element signature="e#2536#2537#0" expanded="false" />
-            <element signature="e#2567#2568#0" expanded="false" />
+            <element signature="e#1442#1443#0" expanded="false" />
+            <element signature="e#1470#1471#0" expanded="false" />
+            <element signature="e#1786#1787#0" expanded="false" />
+            <element signature="e#1850#1851#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2804,17 +2815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/character_sheet.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ClassName.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -2862,10 +2862,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/character_sheet.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ScenarioModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="82" column="30" lean-forward="false" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
+        <state relative-caret-position="1050">
+          <caret line="81" column="33" lean-forward="false" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -2883,28 +2894,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/CharacterActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1229">
-          <caret line="147" column="58" lean-forward="true" selection-start-line="147" selection-start-column="58" selection-end-line="147" selection-end-column="58" />
+        <state relative-caret-position="1203">
+          <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
           <folding>
             <element signature="method#updateModelClassName#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#updateModelPlayerNextLvlExp#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#updateModelPlayerMoney#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#updateUI#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="method#unpackCompleteScenario#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#addSpinnerWatcher#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="method#addTextWatchers#0;class#CharacterActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ScenarioActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="34" column="37" lean-forward="false" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+        <state relative-caret-position="869">
+          <caret line="53" column="26" lean-forward="true" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2942#2943#0" expanded="true" />
-            <element signature="e#2980#2981#0" expanded="true" />
-            <element signature="e#4426#4427#0" expanded="true" />
-            <element signature="e#4465#4466#0" expanded="true" />
+            <element signature="method#updateHealthUI#0;class#ScenarioActivity#0" expanded="false" />
+            <element signature="method#updateExpUI#0;class#ScenarioActivity#0" expanded="false" />
+            <element signature="method#updateMoneyUI#0;class#ScenarioActivity#0" expanded="false" />
+            <element signature="e#3418#3419#0" expanded="true" />
+            <element signature="e#3456#3457#0" expanded="true" />
+            <element signature="e#4975#4976#0" expanded="true" />
+            <element signature="e#5014#5015#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -17,6 +17,7 @@ public class ScenarioActivity extends AppCompatActivity {
     public static final String SCENARIO_EXP = "com.ghcharactertracker.ghcharactertracker.SCENARIO_EXP";
     public static final String SCENARIO_MONEY = "com.ghcharactertracker.ghcharactertracker.SCENARIO_MONEY";
     public static final String SCENARIO_LEVEL = "com.ghcharactertracker.ghcharactertracker.SCENARIO_LEVEL";
+    public static final String SCENARIO_HEALTH = "com.ghcharactertracker.ghcharactertracker.SCENARIO_HEALTH";
     public static final String SCENARIO_COMPLETE = "com.ghcharactertracker.ghcharactertracker.SCENARIO_COMPLETE";
     ScenarioModel scenario;
 
@@ -33,7 +34,7 @@ public class ScenarioActivity extends AppCompatActivity {
 
         scenario = new ScenarioModel(maxHealth, scenExp,scenMoneyTokens);
         scenario.setLevel(scenLevel);
-        updateHealthUI();
+        updateUI();
     }
 
     public void changeHealth(View v) {
@@ -75,6 +76,13 @@ public class ScenarioActivity extends AppCompatActivity {
         updateMoneyUI();
     }
 
+    private void updateUI() {
+        updateHealthUI();
+        updateExpUI();
+        updateMoneyUI();
+        updateLevelUI();
+    }
+
     private void updateHealthUI() {
         EditText healthText = (EditText) findViewById(R.id.scenarioHealth);
 
@@ -91,6 +99,14 @@ public class ScenarioActivity extends AppCompatActivity {
         EditText moneyText = (EditText) findViewById(R.id.scenarioMoney);
 
         moneyText.setText(Integer.toString(scenario.getMoneyTokens()));
+    }
+
+    private void updateLevelUI() {
+        EditText levelText = (EditText) findViewById(R.id.scenarioLevel);
+
+        if (scenario.getLevel() > 0) {
+            levelText.setText(Integer.toString(scenario.getLevel()));
+        }
     }
 
     public void scenarioCompleted(View v) {
@@ -116,9 +132,10 @@ public class ScenarioActivity extends AppCompatActivity {
 
         scenarioResult.putExtra(SCENARIO_COMPLETE, scenarioCompleted);
         scenarioResult.putExtra(SCENARIO_LEVEL, scenario.getLevel());
+        scenarioResult.putExtra(SCENARIO_HEALTH, scenario.getHealth());
 
         if (scenSucc) {
-            scenarioResult.putExtra(SCENARIO_MONEY, scenario.getTotalMoney());
+            scenarioResult.putExtra(SCENARIO_MONEY, scenario.getLootedMoney());
         }
         else {
             scenarioResult.putExtra(SCENARIO_MONEY, scenario.getMoneyTokens());

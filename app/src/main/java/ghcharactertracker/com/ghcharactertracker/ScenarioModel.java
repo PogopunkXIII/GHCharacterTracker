@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 public class ScenarioModel {
     int level, health, exp, moneyTokens = 0;
-    private int totalExp, bonusExp, totalMoney, moneyMultiplier = 0;
+    private int totalExp, bonusExp, lootedMoney, moneyMultiplier = 0;
 
     public ScenarioModel(int health, int exp, int money) {
         this.health = health;
@@ -41,13 +41,13 @@ public class ScenarioModel {
 
     public void incMoney() {
         this.moneyTokens++;
-        this.updateTotalMoney();
+        this.updateLootedMoney();
 
     }
 
     public void decMoney() {
         this.moneyTokens--;
-        this.updateTotalMoney();
+        this.updateLootedMoney();
     }
 
     public int getHealth() {
@@ -68,7 +68,7 @@ public class ScenarioModel {
 
     public void setMoneyTokens(int money) {
         this.moneyTokens = money;
-        this.updateTotalMoney();
+        this.updateLootedMoney();
     }
 
     public int getLevel() {
@@ -79,17 +79,21 @@ public class ScenarioModel {
         this.level = level;
         this.bonusExp = this.getScenarioBonusExp(this.level);
         this.moneyMultiplier = this.getScenarioMoneyMultiplier(this.level);
-        this.updateTotalMoney();
+        this.updateLootedMoney();
         this.updateTotalExp();
     }
 
-    private void updateTotalMoney() {
-        this.totalMoney = moneyTokens * moneyMultiplier;
+    private void updateLootedMoney() {
+        this.lootedMoney = moneyTokens * moneyMultiplier;
     }
 
-    private void updateTotalExp() {
-        this.totalExp = exp + bonusExp;
-    }
+    private void updateTotalExp() { this.totalExp = exp + bonusExp; }
+
+    public static int getScenarioBonusExp(int level) { return (4 + (level * 2)); }
+
+    public int getLootedMoney() { return lootedMoney; }
+
+    public int getTotalExp() { return totalExp; }
 
     public static int getScenarioMoneyMultiplier(int level) {
         switch (level) {
@@ -108,17 +112,5 @@ public class ScenarioModel {
             case 7:
                 return 6;
         }
-    }
-
-    public static int getScenarioBonusExp(int level) {
-        return (4 + (level * 2));
-    }
-
-    public int getTotalMoney() {
-        return totalMoney;
-    }
-
-    public int getTotalExp() {
-        return totalExp;
     }
 }

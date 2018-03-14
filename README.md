@@ -26,7 +26,7 @@ into the character sheet.
 ## Planned Features:
 
 ### In Progress:
-- Scenario data retained until scenario is marked completed
+- Scenario data retained until scenario is marked completed (Done button pressed)
 
 ### Up Next:
 - Adding Characters to list in the Main Activity

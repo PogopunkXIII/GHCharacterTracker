@@ -31,6 +31,7 @@ into the character sheet.
 
 ### Up Next:
 - Persistent memory for characters (and by extension, unfinished scenarios for those characters) through app close/reopen
+- Refactor Scenario Data retaining to use a parcelable ScenarioModel object instead of passing individual fields back and forth
 - Expand Character sheet to track perks
 - Expand Character sheet to track Bonus Perk checks
 - Expand Character sheet to track Items

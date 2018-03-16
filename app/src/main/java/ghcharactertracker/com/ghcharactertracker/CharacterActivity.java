@@ -49,6 +49,7 @@ public class CharacterActivity extends AppCompatActivity {
 
         addSpinnerWatcher();
         addTextWatchers();
+        updateUI();
     }
 
     private void updateModelClassName(ClassName className) {
@@ -98,11 +99,14 @@ public class CharacterActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
+        playerName.setText(player.getPlayerName());
         playerLevel.setText(Integer.toString(player.getLevel()));
         playerCurExp.setText(Integer.toString(player.getCurExp()));
         playerMaxHealth.setText(Integer.toString(player.getMaxHealth()));
         playerNextLvlExp.setText(Integer.toString(player.getNextLevelExp()));
         playerMoney.setText(Integer.toString(player.getMoney()));
+
+        classNameSpinner.setSelection(ClassName.valueOf(player.getClassName().toString()).ordinal());
     }
 
     private void unpackScenarioData(Intent data) {
@@ -159,8 +163,8 @@ public class CharacterActivity extends AppCompatActivity {
     private void addSpinnerWatcher() {
         classNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                updateModelClassName(ClassName.values()[i]);
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                updateModelClassName(ClassName.values()[position]);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}

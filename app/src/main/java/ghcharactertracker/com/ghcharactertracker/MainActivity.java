@@ -23,7 +23,7 @@ public class MainActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ListView charList = findViewById(android.R.id.list);
+        ListView charList = findViewById(android.R.id.list);
 
         adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
@@ -31,7 +31,8 @@ public class MainActivity extends ListActivity {
         setListAdapter(adapter);
 
         charList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
+            @Override
+            public void onItemClick(AdapterView<?> charList, View v, int position, long id) {
                 Character selectedChar = (Character) charList.getItemAtPosition(position);
                 startCharacterActivity(selectedChar);
             }

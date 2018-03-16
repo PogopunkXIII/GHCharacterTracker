@@ -119,8 +119,7 @@ public class CharacterActivity extends AppCompatActivity {
 
         if (scenComp) {
             unpackCompleteScenario(scenExp, scenMoney);
-        }
-        else {
+        } else {
             saveIncompleteScenario(scenLevel, scenHealth, scenExp, scenMoney);
         }
     }

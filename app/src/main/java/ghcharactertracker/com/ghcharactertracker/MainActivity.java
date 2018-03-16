@@ -14,7 +14,9 @@ import java.util.List;
 
 public class MainActivity extends ListActivity {
     public static final String CHARACTER_INPUT = "com.ghcharctertracker.ghcharactertracker.CHARACTER_INPUT";
-    private static final int CHARACTER_REQUEST_CODE = 0;
+    private static final int NEW_CHARACTER_REQUEST_CODE = 0;
+    private static final int EXISTING_CHARACTER_REQUEST_CODE = 1;
+    Character savedChar = null;
     ArrayList<Character> characters = new ArrayList<>();
     ArrayAdapter<Character> adapter;
 
@@ -34,38 +36,50 @@ public class MainActivity extends ListActivity {
             @Override
             public void onItemClick(AdapterView<?> charList, View v, int position, long id) {
                 Character selectedChar = (Character) charList.getItemAtPosition(position);
-                startCharacterActivity(selectedChar);
+                savedChar = selectedChar;
+                startCharacterActivity(selectedChar, false);
             }
         });
     }
 
     public void newCharacter(View v) {
         Character character = new Character(new CharClass(ClassName.Brute));
-        startCharacterActivity(character);
+        startCharacterActivity(character, true);
     }
 
-    private void startCharacterActivity(Character input) {
+    private void startCharacterActivity(Character input, boolean newChar) {
         Intent characterIntent = new Intent(this, CharacterActivity.class);
 
         characterIntent.putExtra(CHARACTER_INPUT, input);
 
-        startActivityForResult(characterIntent, CHARACTER_REQUEST_CODE);
+        if (newChar) {
+            startActivityForResult(characterIntent, NEW_CHARACTER_REQUEST_CODE);
+        } else {
+            startActivityForResult(characterIntent, EXISTING_CHARACTER_REQUEST_CODE);
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
-            case CHARACTER_REQUEST_CODE:
-                if (resultCode == Activity.RESULT_OK) {
-                    getCharacter(data);
-                }
+            case NEW_CHARACTER_REQUEST_CODE:
+                if (resultCode == Activity.RESULT_OK) { addCharacter(data); }
+                break;
+            case EXISTING_CHARACTER_REQUEST_CODE:
+                if (resultCode == Activity.RESULT_OK) { saveCharacter(data); }
                 break;
         }
     }
 
-    private void getCharacter(Intent characterResult) {
+    private void addCharacter(Intent characterResult) {
         Character result = (Character) characterResult.getParcelableExtra(CharacterActivity.PLAYER_CHAR);
         characters.add(result);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void saveCharacter(Intent characterResult) {
+        Character result = (Character) characterResult.getParcelableExtra(CharacterActivity.PLAYER_CHAR);
+        characters.set(characters.indexOf(savedChar), result);
         adapter.notifyDataSetChanged();
     }
 }

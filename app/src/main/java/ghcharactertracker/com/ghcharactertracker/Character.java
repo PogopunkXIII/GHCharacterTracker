@@ -10,6 +10,7 @@ import android.os.Parcelable;
 
 public class Character implements Parcelable{
     String playerName = "Name";
+    int id = -1;
     int level, maxHealth, curExp, nextLevelExp, money;
     CharClass charClass;
     ScenarioModel currentScenario;
@@ -76,6 +77,10 @@ public class Character implements Parcelable{
     public ClassName getClassName() { return charClass.getClassName(); }
 
     public String getPlayerName() { return playerName; }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public ScenarioModel getCurrentScenario() { return currentScenario; }
 

@@ -33,8 +33,7 @@ public class CharacterActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         player = (Character) intent.getParcelableExtra(MainActivity.CHARACTER_INPUT);
-        player = new Character(new CharClass(ClassName.Brute));
-        player.setCurrentScenario(new ScenarioModel(player.getMaxHealth(), 0, 0));
+        //player = new Character(new CharClass(ClassName.Brute));
 
         classNameSpinner = (Spinner) findViewById(R.id.classNameSpinner);
         classNameSpinner.setAdapter(new ArrayAdapter<ClassName>(this,
@@ -68,7 +67,7 @@ public class CharacterActivity extends AppCompatActivity {
     private void updateModelPlayerLevel(int level) {
         if (player.getLevel() != level && level >= 0 && level <= 9) {
             player.setLevel(level);
-            player.getCurrentScenario().setHealth(player.getMaxHealth());
+            //player.getCurrentScenario().setHealth(player.getMaxHealth());
             updateUI();
         }
     }
@@ -82,7 +81,7 @@ public class CharacterActivity extends AppCompatActivity {
     private void updateModelPlayerMaxHealth(int maxHealth) {
         if (player.getMaxHealth() != maxHealth) {
             player.setMaxHealth(maxHealth);
-            player.getCurrentScenario().setHealth(maxHealth);
+            //player.getCurrentScenario().setHealth(maxHealth);
         }
     }
 

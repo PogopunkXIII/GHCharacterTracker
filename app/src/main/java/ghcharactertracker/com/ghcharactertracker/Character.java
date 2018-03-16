@@ -22,6 +22,8 @@ public class Character implements Parcelable{
         this.money = 0;
         this.maxHealth = 0;
         this.nextLevelExp = 0;
+
+        currentScenario = new ScenarioModel(maxHealth, 0, 0);
     }
     public int getLevel() {
         return level;

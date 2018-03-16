@@ -27,11 +27,11 @@ into the character sheet.
 
 ### In Progress:
 ~~- Scenario data retained until scenario is marked completed (Done button pressed)~~
-- Adding Characters to list in the Main Activity
+~~- Adding Characters to list in the Main Activity~~
+- Refactor Scenario Data retaining to use a parcelable ScenarioModel object instead of passing individual fields back and forth
 
 ### Up Next:
 - Persistent memory for characters (and by extension, unfinished scenarios for those characters) through app close/reopen
-- Refactor Scenario Data retaining to use a parcelable ScenarioModel object instead of passing individual fields back and forth
 - Expand Character sheet to track perks
 - Expand Character sheet to track Bonus Perk checks
 - Expand Character sheet to track Items
@@ -39,3 +39,4 @@ into the character sheet.
 
 ## Known Bugs:
 - Pressing the "soft" back button in the top left of the Scenario tracker erases all character data from the character sheet
+- Pressing the "soft" back button in the top left of the Character Sheet erases all characters saved in the main list (this should be fixed with persistant memory implementation?)

@@ -50,8 +50,17 @@ public class MainActivity extends ListActivity {
     }
 
     private void getCharacter(Intent characterResult) {
-
+        characters.add((Character) characterResult.getParcelableExtra(CharacterActivity.PLAYER_CHAR));
+        addNewCharacterName();
     }
 
+    private void addNewCharacterName() {
+        ArrayList<String> temp = new ArrayList<>();
 
+        for(Character chars : characters) {
+            temp.add(chars.getPlayerName());
+        }
+
+        characterNames = temp;
+    }
 }

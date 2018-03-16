@@ -116,7 +116,7 @@ public class ScenarioActivity extends AppCompatActivity {
     private void saveScenarioData(boolean scenarioCompleted) {
         EditText scenarioLvl = (EditText) findViewById(R.id.scenarioLevel);
         CheckBox scenarioSuccessful = (CheckBox) findViewById(R.id.scenarioSuccessful);
-        //TODO: Throw a dialog telling the user to input a scenario level
+
         if (scenarioLvl.getText().toString().isEmpty()) {
             Toast.makeText(this,"Please enter a scenario Level", Toast.LENGTH_LONG).show();
             return;

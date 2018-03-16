@@ -12,6 +12,7 @@ public class Character implements Parcelable{
     String playerName;
     int level, maxHealth, curExp, nextLevelExp, money;
     CharClass charClass;
+    ScenarioModel currentScenario;
 
     public Character(CharClass charClass) {
         this.playerName = "";
@@ -74,6 +75,10 @@ public class Character implements Parcelable{
 
     public String getPlayerName() { return playerName; }
 
+    public ScenarioModel getCurrentScenario() { return currentScenario; }
+
+    public void setCurrentScenario(ScenarioModel currentScenario) { this.currentScenario = currentScenario; }
+
     public void setPlayerName(String playerName) { this.playerName = playerName; }
 
     @Override
@@ -88,22 +93,33 @@ public class Character implements Parcelable{
         out.writeInt(level);
         out.writeInt(curExp);
         out.writeInt(money);
-        //converts the enum of the class to the integer value
-        //out.writeInt(charClass.name.getValue());
+
+        out.writeInt(currentScenario.getHealth());
+        out.writeInt(currentScenario.getExp());
+        out.writeInt(currentScenario.getMoneyTokens());
+        out.writeInt(currentScenario.getLevel());
     }
 
     public static final Parcelable.Creator<Character> CREATOR = new Parcelable.Creator<Character>() {
         public Character createFromParcel(Parcel in) {
+            String playerName = in.readString();
+
+            CharClass newCharClass = new CharClass(ClassName.valueOf(in.readString()));
+
             int level = in.readInt();
             int curExp = in.readInt();
             int money = in.readInt();
-            //converts the integer value of the class name into the enum type
-            CharClass newCharClass = new CharClass(ClassName.values()[in.readInt()]);
+
+            ScenarioModel newScen = new ScenarioModel(in.readInt(), in.readInt(), in.readInt());
+            newScen.setLevel(in.readInt());
+
 
             Character newChar = new Character(newCharClass);
+            newChar.setPlayerName(playerName);
             newChar.setLevel(level);
             newChar.setCurExp(curExp);
             newChar.setMoney(money);
+            newChar.setCurrentScenario(newScen);
 
             return newChar;
         }

@@ -18,12 +18,12 @@ import android.widget.Spinner;
 
 public class CharacterActivity extends AppCompatActivity {
     public static final String MAX_HEALTH = "com.ghcharctertracker.ghcharactertracker.MAX_HEALTH";
+    public static final String PLAYER_CHAR = "com.ghcharctertracker.ghcharactertracker.PLAYER_CHAR";
 
     private static final int SCENARIO_REQUEST_CODE = 0;
 
 
     Character player;
-    ScenarioModel currentScenario;
     EditText playerName, playerLevel, playerCurExp, playerMaxHealth, playerNextLvlExp, playerMoney;
     Spinner classNameSpinner;
 
@@ -32,7 +32,7 @@ public class CharacterActivity extends AppCompatActivity {
         setContentView(R.layout.character_sheet);
 
         player = new Character(new CharClass(ClassName.Brute));
-        currentScenario = new ScenarioModel(player.getMaxHealth(), 0, 0);
+        player.setCurrentScenario(new ScenarioModel(player.getMaxHealth(), 0, 0));
 
         classNameSpinner = (Spinner) findViewById(R.id.classNameSpinner);
         classNameSpinner.setAdapter(new ArrayAdapter<ClassName>(this,
@@ -48,8 +48,6 @@ public class CharacterActivity extends AppCompatActivity {
 
         addSpinnerWatcher();
         addTextWatchers();
-
-
     }
 
     private void updateModelClassName(ClassName className) {
@@ -68,7 +66,7 @@ public class CharacterActivity extends AppCompatActivity {
     private void updateModelPlayerLevel(int level) {
         if (player.getLevel() != level && level >= 0 && level <= 9) {
             player.setLevel(level);
-            currentScenario.setHealth(player.getMaxHealth());
+            player.getCurrentScenario().setHealth(player.getMaxHealth());
             updateUI();
         }
     }
@@ -82,7 +80,7 @@ public class CharacterActivity extends AppCompatActivity {
     private void updateModelPlayerMaxHealth(int maxHealth) {
         if (player.getMaxHealth() != maxHealth) {
             player.setMaxHealth(maxHealth);
-            currentScenario.setHealth(maxHealth);
+            player.getCurrentScenario().setHealth(maxHealth);
         }
     }
 
@@ -126,24 +124,24 @@ public class CharacterActivity extends AppCompatActivity {
         player.addMoney(newMoney);
         player.addExp(newExp);
 
-        currentScenario = new ScenarioModel(player.getMaxHealth(), 0, 0);
+        player.setCurrentScenario(new ScenarioModel(player.getMaxHealth(), 0, 0));
 
         updateUI();
     }
 
     private void saveIncompleteScenario(int level, int curHealth, int exp, int moneyTokens) {
-        currentScenario.setLevel(level);
-        currentScenario.setHealth(curHealth);
-        currentScenario.setExp(exp);
-        currentScenario.setMoneyTokens(moneyTokens);
+        player.getCurrentScenario().setLevel(level);
+        player.getCurrentScenario().setHealth(curHealth);
+        player.getCurrentScenario().setExp(exp);
+        player.getCurrentScenario().setMoneyTokens(moneyTokens);
     }
 
     public void newScenario(View v) {
         Intent newScenarioIntent = new Intent(this, ScenarioActivity.class);
-        newScenarioIntent.putExtra(ScenarioActivity.SCENARIO_LEVEL, currentScenario.getLevel());
-        newScenarioIntent.putExtra(MAX_HEALTH, currentScenario.getHealth());
-        newScenarioIntent.putExtra(ScenarioActivity.SCENARIO_EXP, currentScenario.getExp());
-        newScenarioIntent.putExtra(ScenarioActivity.SCENARIO_MONEY, currentScenario.getMoneyTokens());
+        newScenarioIntent.putExtra(ScenarioActivity.SCENARIO_LEVEL, player.getCurrentScenario().getLevel());
+        newScenarioIntent.putExtra(MAX_HEALTH, player.getCurrentScenario().getHealth());
+        newScenarioIntent.putExtra(ScenarioActivity.SCENARIO_EXP, player.getCurrentScenario().getExp());
+        newScenarioIntent.putExtra(ScenarioActivity.SCENARIO_MONEY, player.getCurrentScenario().getMoneyTokens());
         startActivityForResult(newScenarioIntent, SCENARIO_REQUEST_CODE);
     }
 
@@ -252,6 +250,17 @@ public class CharacterActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        packupCharacterData();
+    }
+
+    private void packupCharacterData() {
+        Intent characterResult = new Intent();
+
+        characterResult.putExtra(PLAYER_CHAR, player);
     }
 
 

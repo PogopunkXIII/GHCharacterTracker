@@ -33,6 +33,7 @@ into the character sheet.
 
 ### Up Next:
 - Refactor into MVVM/MVC/VIPER
+- **CODE REVIEW WITH THE BOIS**
 - Expand Character sheet to track perks
 - Expand Character sheet to track Bonus Perk checks
 - Expand Character sheet to track Items

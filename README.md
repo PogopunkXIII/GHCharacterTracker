@@ -26,12 +26,12 @@ into the character sheet.
 ## Planned Features:
 
 ### In Progress:
-~~- Scenario data retained until scenario is marked completed (Done button pressed)~~
-~~- Adding Characters to list in the Main Activity~~
-- Refactor Scenario Data retaining to use a parcelable ScenarioModel object instead of passing individual fields back and forth
+- ~~Scenario data retained until scenario is marked completed (Done button pressed)~~
+- ~~Adding Characters to list in the Main Activity~~
+- ~~Refactor Scenario Data retaining to use a parcelable ScenarioModel object instead of passing individual fields back and forth~~
+- Persistent memory for characters (and by extension, unfinished scenarios for those characters) through app close/reopen
 
 ### Up Next:
-- Persistent memory for characters (and by extension, unfinished scenarios for those characters) through app close/reopen
 - Refactor into MVVM/MVC/VIPER
 - Expand Character sheet to track perks
 - Expand Character sheet to track Bonus Perk checks

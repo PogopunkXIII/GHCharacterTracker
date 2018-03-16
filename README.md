@@ -41,3 +41,4 @@ into the character sheet.
 ## Known Bugs:
 - Pressing the "soft" back button in the top left of the Scenario tracker erases all character data from the character sheet
 - Pressing the "soft" back button in the top left of the Character Sheet erases all characters saved in the main list (this should be fixed with persistant memory implementation?)
+- The first time you start a scenario activity with a brand new character the MAX_HEALTH isn't properly passed into the scenario. This occurs because the scenario is created prior to the character having a meaningful level so we don't know what the max health should be. it defaults to 0. After the first scenario, as long as the character has a meaningful level, the max health will be auto set.

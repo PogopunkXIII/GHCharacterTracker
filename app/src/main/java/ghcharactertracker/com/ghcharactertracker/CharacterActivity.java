@@ -17,7 +17,6 @@ import android.widget.Spinner;
  */
 
 public class CharacterActivity extends AppCompatActivity {
-    public static final String MAX_HEALTH = "com.ghcharctertracker.ghcharactertracker.MAX_HEALTH";
     public static final String PLAYER_CHAR = "com.ghcharctertracker.ghcharactertracker.PLAYER_CHAR";
 
     private static final int SCENARIO_REQUEST_CODE = 0;
@@ -112,40 +111,37 @@ public class CharacterActivity extends AppCompatActivity {
     private void unpackScenarioData(Intent data) {
 
         boolean scenComp = data.getBooleanExtra(ScenarioActivity.SCENARIO_COMPLETE, false);
-        int scenHealth = data.getIntExtra(ScenarioActivity.SCENARIO_HEALTH, player.getMaxHealth());
-        int scenLevel = data.getIntExtra(ScenarioActivity.SCENARIO_LEVEL, 0);
-        int scenExp = data.getIntExtra(ScenarioActivity.SCENARIO_EXP, 0);
-        int scenMoney = data.getIntExtra(ScenarioActivity.SCENARIO_MONEY, 0);
+        boolean scenSucc = data.getBooleanExtra(ScenarioActivity.SCENARIO_SUCCESSFUL, false);
+        ScenarioModel resultScen = data.getParcelableExtra(ScenarioActivity.SCENARIO);
 
         if (scenComp) {
-            unpackCompleteScenario(scenExp, scenMoney);
+            unpackCompleteScenario(resultScen, scenSucc);
         } else {
-            saveIncompleteScenario(scenLevel, scenHealth, scenExp, scenMoney);
+            saveIncompleteScenario(resultScen);
         }
     }
 
-    private void unpackCompleteScenario(int newExp, int newMoney) {
-        player.addMoney(newMoney);
-        player.addExp(newExp);
+    private void unpackCompleteScenario(ScenarioModel scenario, boolean success) {
+        player.addMoney(scenario.getLootedMoney());
+
+        if (success) {
+            player.addExp(scenario.getTotalExp());
+        } else {
+            player.addExp(scenario.getExp());
+        }
 
         player.setCurrentScenario(new ScenarioModel(player.getMaxHealth(), 0, 0));
 
         updateUI();
     }
 
-    private void saveIncompleteScenario(int level, int curHealth, int exp, int moneyTokens) {
-        player.getCurrentScenario().setLevel(level);
-        player.getCurrentScenario().setHealth(curHealth);
-        player.getCurrentScenario().setExp(exp);
-        player.getCurrentScenario().setMoneyTokens(moneyTokens);
+    private void saveIncompleteScenario(ScenarioModel scenario) {
+        player.setCurrentScenario(scenario);
     }
 
     public void newScenario(View v) {
         Intent newScenarioIntent = new Intent(this, ScenarioActivity.class);
-        newScenarioIntent.putExtra(ScenarioActivity.SCENARIO_LEVEL, player.getCurrentScenario().getLevel());
-        newScenarioIntent.putExtra(MAX_HEALTH, player.getCurrentScenario().getHealth());
-        newScenarioIntent.putExtra(ScenarioActivity.SCENARIO_EXP, player.getCurrentScenario().getExp());
-        newScenarioIntent.putExtra(ScenarioActivity.SCENARIO_MONEY, player.getCurrentScenario().getMoneyTokens());
+        newScenarioIntent.putExtra(ScenarioActivity.SCENARIO, player.getCurrentScenario());
         startActivityForResult(newScenarioIntent, SCENARIO_REQUEST_CODE);
     }
 

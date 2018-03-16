@@ -1,5 +1,7 @@
 package ghcharactertracker.com.ghcharactertracker;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 
@@ -7,7 +9,7 @@ import android.widget.EditText;
  * Created by jesse.mailhot on 3/6/2018.
  */
 
-public class ScenarioModel {
+public class ScenarioModel implements Parcelable{
     int level, health, exp, moneyTokens = 0;
     private int totalExp, bonusExp, lootedMoney, moneyMultiplier = 0;
 
@@ -113,4 +115,34 @@ public class ScenarioModel {
                 return 6;
         }
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeInt(level);
+        out.writeInt(health);
+        out.writeInt(exp);
+        out.writeInt(moneyTokens);
+    }
+
+    public static final Parcelable.Creator<ScenarioModel> CREATOR = new Parcelable.Creator<ScenarioModel>() {
+        public ScenarioModel createFromParcel(Parcel in) {
+
+            int level = in.readInt();
+            int health = in.readInt();
+            int exp = in.readInt();
+            int moneyTokens = in.readInt();
+
+            ScenarioModel newScen = new ScenarioModel(health, exp, moneyTokens);
+            newScen.setLevel(level);
+
+            return newScen;
+        }
+
+        public ScenarioModel[] newArray(int size) { return new ScenarioModel[size]; }
+    };
 }

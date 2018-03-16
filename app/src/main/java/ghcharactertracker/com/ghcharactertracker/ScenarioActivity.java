@@ -14,11 +14,9 @@ import android.widget.Toast;
  */
 
 public class ScenarioActivity extends AppCompatActivity {
-    public static final String SCENARIO_EXP = "com.ghcharactertracker.ghcharactertracker.SCENARIO_EXP";
-    public static final String SCENARIO_MONEY = "com.ghcharactertracker.ghcharactertracker.SCENARIO_MONEY";
-    public static final String SCENARIO_LEVEL = "com.ghcharactertracker.ghcharactertracker.SCENARIO_LEVEL";
-    public static final String SCENARIO_HEALTH = "com.ghcharactertracker.ghcharactertracker.SCENARIO_HEALTH";
+    public static final String SCENARIO = "com.ghcharactertracker.ghcharactertracker.SCENARIO";
     public static final String SCENARIO_COMPLETE = "com.ghcharactertracker.ghcharactertracker.SCENARIO_COMPLETE";
+    public static final String SCENARIO_SUCCESSFUL = "com.ghcharactertracker.ghcharactertracker.SCENARIO_SUCCESSFUL";
     ScenarioModel scenario;
 
 
@@ -27,13 +25,8 @@ public class ScenarioActivity extends AppCompatActivity {
         setContentView(R.layout.scenario_tracker);
 
         Intent intent = getIntent();
-        int maxHealth = intent.getIntExtra(CharacterActivity.MAX_HEALTH, 0);
-        int scenLevel = intent.getIntExtra(SCENARIO_LEVEL, 0);
-        int scenExp = intent.getIntExtra(SCENARIO_EXP, 0);
-        int scenMoneyTokens = intent.getIntExtra(SCENARIO_MONEY, 0);
+        scenario = intent.getParcelableExtra(SCENARIO);
 
-        scenario = new ScenarioModel(maxHealth, scenExp,scenMoneyTokens);
-        scenario.setLevel(scenLevel);
         updateUI();
     }
 
@@ -130,7 +123,11 @@ public class ScenarioActivity extends AppCompatActivity {
 
         Intent scenarioResult = new Intent();
 
+
         scenarioResult.putExtra(SCENARIO_COMPLETE, scenarioCompleted);
+        scenarioResult.putExtra(SCENARIO_SUCCESSFUL, scenSucc);
+        scenarioResult.putExtra(SCENARIO, scenario);
+        /*
         scenarioResult.putExtra(SCENARIO_LEVEL, scenario.getLevel());
         scenarioResult.putExtra(SCENARIO_HEALTH, scenario.getHealth());
 
@@ -148,6 +145,7 @@ public class ScenarioActivity extends AppCompatActivity {
         else {
             scenarioResult.putExtra(SCENARIO_EXP, scenario.getExp());
         }
+        */
 
         setResult(Activity.RESULT_OK, scenarioResult);
 

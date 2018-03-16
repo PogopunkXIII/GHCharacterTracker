@@ -101,10 +101,7 @@ public class Character implements Parcelable{
         out.writeInt(curExp);
         out.writeInt(money);
 
-        out.writeInt(currentScenario.getHealth());
-        out.writeInt(currentScenario.getExp());
-        out.writeInt(currentScenario.getMoneyTokens());
-        out.writeInt(currentScenario.getLevel());
+        out.writeParcelable(currentScenario, 0);
     }
 
     public static final Parcelable.Creator<Character> CREATOR = new Parcelable.Creator<Character>() {
@@ -117,8 +114,7 @@ public class Character implements Parcelable{
             int curExp = in.readInt();
             int money = in.readInt();
 
-            ScenarioModel newScen = new ScenarioModel(in.readInt(), in.readInt(), in.readInt());
-            newScen.setLevel(in.readInt());
+            ScenarioModel newScen = in.readParcelable(ScenarioModel.class.getClassLoader());
 
 
             Character newChar = new Character(newCharClass);

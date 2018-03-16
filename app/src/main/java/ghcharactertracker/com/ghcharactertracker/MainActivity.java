@@ -5,37 +5,50 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends ListActivity {
+    public static final String CHARACTER_INPUT = "com.ghcharctertracker.ghcharactertracker.CHARACTER_INPUT";
     private static final int CHARACTER_REQUEST_CODE = 0;
-    ArrayList<String> characterNames = new ArrayList<>();
     ArrayList<Character> characters = new ArrayList<>();
-
-    ArrayAdapter<String> adapter;
-
-    int clickCounter = 0;
+    ArrayAdapter<Character> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        adapter = new ArrayAdapter<String>(this,
+        final ListView charList = findViewById(android.R.id.list);
+
+        adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
-                characterNames);
+                characters);
         setListAdapter(adapter);
+
+        charList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
+                Character selectedChar = (Character) charList.getItemAtPosition(position);
+                startCharacterActivity(selectedChar);
+            }
+        });
     }
 
-    public void addItems(View v) {
-        //Character character = new Character(new CharClass(ClassName.Brute));
-        Intent characterIntent = new Intent(this, CharacterActivity.class);
-        startActivityForResult(characterIntent, CHARACTER_REQUEST_CODE);
+    public void newCharacter(View v) {
+        Character character = new Character(new CharClass(ClassName.Brute));
+        startCharacterActivity(character);
+    }
 
-        //characters.add("Clicked: " + clickCounter++);
-        //adapter.notifyDataSetChanged();
+    private void startCharacterActivity(Character input) {
+        Intent characterIntent = new Intent(this, CharacterActivity.class);
+
+        characterIntent.putExtra(CHARACTER_INPUT, input);
+
+        startActivityForResult(characterIntent, CHARACTER_REQUEST_CODE);
     }
 
     @Override
@@ -50,17 +63,8 @@ public class MainActivity extends ListActivity {
     }
 
     private void getCharacter(Intent characterResult) {
-        characters.add((Character) characterResult.getParcelableExtra(CharacterActivity.PLAYER_CHAR));
-        addNewCharacterName();
-    }
-
-    private void addNewCharacterName() {
-        ArrayList<String> temp = new ArrayList<>();
-
-        for(Character chars : characters) {
-            temp.add(chars.getPlayerName());
-        }
-
-        characterNames = temp;
+        Character result = (Character) characterResult.getParcelableExtra(CharacterActivity.PLAYER_CHAR);
+        characters.add(result);
+        adapter.notifyDataSetChanged();
     }
 }

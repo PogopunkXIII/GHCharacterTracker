@@ -9,13 +9,13 @@ import android.os.Parcelable;
  */
 
 public class Character implements Parcelable{
-    String playerName;
+    String playerName = "Name";
     int level, maxHealth, curExp, nextLevelExp, money;
     CharClass charClass;
     ScenarioModel currentScenario;
 
     public Character(CharClass charClass) {
-        this.playerName = "";
+        this.playerName = "Name";
         this.charClass = charClass;
         this.level = 0;
         this.curExp = 0;
@@ -133,7 +133,10 @@ public class Character implements Parcelable{
         this.curExp += scenExp;
     }
 
-    public void addMoney(int scenMoney) {
-        this.money += scenMoney;
+    public void addMoney(int scenMoney) { this.money += scenMoney; }
+
+    @Override
+    public String toString() {
+        return playerName + '\n' + charClass.getClassName().toString();
     }
 }

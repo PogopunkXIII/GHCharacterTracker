@@ -31,6 +31,8 @@ public class CharacterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.character_sheet);
 
+        Intent intent = getIntent();
+        player = (Character) intent.getParcelableExtra(MainActivity.CHARACTER_INPUT);
         player = new Character(new CharClass(ClassName.Brute));
         player.setCurrentScenario(new ScenarioModel(player.getMaxHealth(), 0, 0));
 
@@ -261,6 +263,10 @@ public class CharacterActivity extends AppCompatActivity {
         Intent characterResult = new Intent();
 
         characterResult.putExtra(PLAYER_CHAR, player);
+
+        setResult(Activity.RESULT_OK, characterResult);
+
+        this.finish();
     }
 
 

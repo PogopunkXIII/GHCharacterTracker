@@ -16,14 +16,14 @@
             android:id="@+id/addBtn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="addItems"
+            android:onClick="newCharacter"
             android:text="@string/add_char_button" />
+
         <ListView
             android:id="@android:id/list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:drawSelectorOnTop="false"
-            />
+            android:drawSelectorOnTop="false" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

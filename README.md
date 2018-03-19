@@ -32,8 +32,8 @@ into the character sheet.
 - Persistent memory for characters (and by extension, unfinished scenarios for those characters) through app close/reopen
 
 ### Up Next:
-- Refactor into MVVM/MVC/VIPER
 - **CODE REVIEW WITH THE BOIS**
+- Refactor into MVVM/MVC/VIPER
 - Expand Character sheet to track perks
 - Expand Character sheet to track Bonus Perk checks
 - Expand Character sheet to track Items

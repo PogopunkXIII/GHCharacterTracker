@@ -2,24 +2,22 @@ package ghcharactertracker.com.ghcharactertracker;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.view.View;
-import android.widget.EditText;
 
 /**
  * Created by jesse.mailhot on 3/6/2018.
  */
 
-public class ScenarioModel implements Parcelable{
+public class Scenario implements Parcelable{
     int level, health, exp, moneyTokens = 0;
     private int totalExp, bonusExp, lootedMoney, moneyMultiplier = 0;
 
-    public ScenarioModel(int health, int exp, int money) {
+    public Scenario(int health, int exp, int money) {
         this.health = health;
         this.exp = exp;
         this.moneyTokens = money;
     }
 
-    public ScenarioModel() {
+    public Scenario() {
         this.health = 0;
         this.exp = 0;
         this.moneyTokens = 0;
@@ -129,20 +127,20 @@ public class ScenarioModel implements Parcelable{
         out.writeInt(moneyTokens);
     }
 
-    public static final Parcelable.Creator<ScenarioModel> CREATOR = new Parcelable.Creator<ScenarioModel>() {
-        public ScenarioModel createFromParcel(Parcel in) {
+    public static final Parcelable.Creator<Scenario> CREATOR = new Parcelable.Creator<Scenario>() {
+        public Scenario createFromParcel(Parcel in) {
 
             int level = in.readInt();
             int health = in.readInt();
             int exp = in.readInt();
             int moneyTokens = in.readInt();
 
-            ScenarioModel newScen = new ScenarioModel(health, exp, moneyTokens);
+            Scenario newScen = new Scenario(health, exp, moneyTokens);
             newScen.setLevel(level);
 
             return newScen;
         }
 
-        public ScenarioModel[] newArray(int size) { return new ScenarioModel[size]; }
+        public Scenario[] newArray(int size) { return new Scenario[size]; }
     };
 }

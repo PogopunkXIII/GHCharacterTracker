@@ -49,8 +49,8 @@
       <file leaf-file-name="CharacterActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/CharacterActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-225">
-              <caret line="38" column="53" lean-forward="false" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
+            <state relative-caret-position="999">
+              <caret line="142" column="76" lean-forward="true" selection-start-line="142" selection-start-column="76" selection-end-line="142" selection-end-column="76" />
               <folding>
                 <element signature="method#updateModelClassName#0;class#CharacterActivity#0" expanded="false" />
                 <element signature="method#updateModelPlayerName#0;class#CharacterActivity#0" expanded="false" />
@@ -59,6 +59,11 @@
                 <element signature="method#updateModelPlayerMaxHealth#0;class#CharacterActivity#0" expanded="false" />
                 <element signature="method#updateModelPlayerNextLvlExp#0;class#CharacterActivity#0" expanded="false" />
                 <element signature="method#updateModelPlayerMoney#0;class#CharacterActivity#0" expanded="false" />
+                <element signature="method#updateUI#0;class#CharacterActivity#0" expanded="false" />
+                <element signature="method#unpackScenarioData#0;class#CharacterActivity#0" expanded="false" />
+                <element signature="method#unpackCompleteScenario#0;class#CharacterActivity#0" expanded="false" />
+                <element signature="method#saveIncompleteScenario#0;class#CharacterActivity#0" expanded="false" />
+                <element signature="e#4791#4792#0" expanded="true" />
                 <element signature="method#onActivityResult#0;class#CharacterActivity#0" expanded="false" />
                 <element signature="method#addTextWatchers#0;class#CharacterActivity#0" expanded="false" />
               </folding>
@@ -66,49 +71,55 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Character.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Character.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/Character.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1411">
-              <caret line="116" column="92" lean-forward="false" selection-start-line="116" selection-start-column="92" selection-end-line="116" selection-end-column="92" />
+            <state relative-caret-position="374">
+              <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#setLevel#0;class#Character#0" expanded="false" />
                 <element signature="method#setClassName#0;class#Character#0" expanded="false" />
-                <element signature="e#3777#3778#0" expanded="true" />
-                <element signature="e#3855#3856#0" expanded="true" />
+                <element signature="method#getCurrentScenario#0;class#Character#0" expanded="false" />
+                <element signature="method#writeToParcel#0;class#Character#0" expanded="false" />
+                <element signature="class#2783:3625" expanded="false" />
+                <element signature="e#3818#3819#0" expanded="true" />
+                <element signature="e#3896#3897#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScenarioActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ScenarioActivity.java">
+      <file leaf-file-name="Scenario.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/Scenario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="27" column="55" lean-forward="false" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
+            <state relative-caret-position="1271">
+              <caret line="126" column="34" lean-forward="true" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#changeHealth#0;class#ScenarioActivity#0" expanded="false" />
-                <element signature="method#changeExp#0;class#ScenarioActivity#0" expanded="false" />
-                <element signature="method#changeMoney#0;class#ScenarioActivity#0" expanded="false" />
-                <element signature="method#updateUI#0;class#ScenarioActivity#0" expanded="false" />
-                <element signature="method#updateHealthUI#0;class#ScenarioActivity#0" expanded="false" />
-                <element signature="method#updateExpUI#0;class#ScenarioActivity#0" expanded="false" />
-                <element signature="method#updateMoneyUI#0;class#ScenarioActivity#0" expanded="false" />
-                <element signature="method#updateLevelUI#0;class#ScenarioActivity#0" expanded="false" />
+                <element signature="method#setLevel#0;class#Scenario#0" expanded="false" />
+                <element signature="method#getScenarioMoneyMultiplier#0;class#Scenario#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScenarioModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ScenarioModel.java">
+      <file leaf-file-name="PlayerContract.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/PlayerContract.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
-              <caret line="125" column="22" lean-forward="false" selection-start-line="125" selection-start-column="22" selection-end-line="125" selection-end-column="22" />
+            <state relative-caret-position="340">
+              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CharClass.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/CharClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="44" column="69" lean-forward="false" selection-start-line="44" selection-start-column="69" selection-end-line="44" selection-end-column="69" />
               <folding>
-                <element signature="method#setLevel#0;class#ScenarioModel#0" expanded="false" />
-                <element signature="method#getScenarioMoneyMultiplier#0;class#ScenarioModel#0" expanded="false" />
+                <element signature="method#getLvlUpValsValues#0;class#CharClass#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -120,8 +131,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -1863,14 +1874,16 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/character_sheet.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ClassName.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/CharClass.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/scenario_tracker.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ScenarioModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ScenarioActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/CharacterActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/Scenario.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/Character.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/PlayerContract.java" />
       </list>
     </option>
   </component>
@@ -2106,7 +2119,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521230610339" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521484682400" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2154,7 +2167,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521230610339" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521484682401" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2337,7 +2350,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521230610342" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521484682402" />
       </method>
     </configuration>
     <list size="1">
@@ -2380,29 +2393,30 @@
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39965987" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1723356" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21088435" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879817" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2519305" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879817" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39965987" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2410,7 +2424,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="StringPreview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -2418,23 +2431,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="33" />
+      <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="31" column="37" lean-forward="false" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1190#1563#0" expanded="true" />
-            <element signature="e#1562#1563#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/CharacterActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -2447,6 +2448,11 @@
             <element signature="method#updateModelPlayerMaxHealth#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#updateModelPlayerNextLvlExp#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#updateModelPlayerMoney#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="method#updateUI#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="method#unpackScenarioData#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="method#unpackCompleteScenario#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="method#saveIncompleteScenario#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="e#4791#4792#0" expanded="true" />
             <element signature="method#onActivityResult#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#addTextWatchers#0;class#CharacterActivity#0" expanded="false" />
           </folding>
@@ -2470,9 +2476,13 @@
           <caret line="15" column="40" lean-forward="false" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#setLevel#0;class#Character#0" expanded="false" />
             <element signature="method#setClassName#0;class#Character#0" expanded="false" />
-            <element signature="e#3777#3778#0" expanded="true" />
-            <element signature="e#3855#3856#0" expanded="true" />
+            <element signature="method#getCurrentScenario#0;class#Character#0" expanded="false" />
+            <element signature="method#writeToParcel#0;class#Character#0" expanded="false" />
+            <element signature="class#2783:3625" expanded="false" />
+            <element signature="e#3818#3819#0" expanded="true" />
+            <element signature="e#3896#3897#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2532,13 +2542,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ScenarioModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/Scenario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="64" column="58" lean-forward="false" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
           <folding>
-            <element signature="method#setLevel#0;class#ScenarioModel#0" expanded="false" />
-            <element signature="method#getScenarioMoneyMultiplier#0;class#ScenarioModel#0" expanded="false" />
+            <element signature="method#setLevel#0;class#Scenario#0" expanded="false" />
+            <element signature="method#getScenarioMoneyMultiplier#0;class#Scenario#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2634,13 +2644,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ScenarioModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/Scenario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="64" column="58" lean-forward="false" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
           <folding>
-            <element signature="method#setLevel#0;class#ScenarioModel#0" expanded="false" />
-            <element signature="method#getScenarioMoneyMultiplier#0;class#ScenarioModel#0" expanded="false" />
+            <element signature="method#setLevel#0;class#Scenario#0" expanded="false" />
+            <element signature="method#getScenarioMoneyMultiplier#0;class#Scenario#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2767,46 +2777,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/CharClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="69" lean-forward="false" selection-start-line="44" selection-start-column="69" selection-end-line="44" selection-end-column="69" />
-          <folding>
-            <element signature="method#getLvlUpValsValues#0;class#CharClass#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/scenario_tracker.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/character_sheet.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-26/android.jar!/android/content/Intent.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
@@ -2834,19 +2804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#839#864#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
@@ -2855,17 +2812,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1190#1563#0" expanded="true" />
             <element signature="e#1562#1563#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/ScenarioModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="125" column="22" lean-forward="false" selection-start-line="125" selection-start-column="22" selection-end-line="125" selection-end-column="22" />
-          <folding>
-            <element signature="method#setLevel#0;class#ScenarioModel#0" expanded="false" />
-            <element signature="method#getScenarioMoneyMultiplier#0;class#ScenarioModel#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2888,10 +2834,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/scenario_tracker.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/character_sheet.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/CharClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="69" lean-forward="false" selection-start-line="44" selection-start-column="69" selection-end-line="44" selection-end-column="69" />
+          <folding>
+            <element signature="method#getLvlUpValsValues#0;class#CharClass#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/CharacterActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <caret line="38" column="53" lean-forward="false" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
+        <state relative-caret-position="999">
+          <caret line="142" column="76" lean-forward="true" selection-start-line="142" selection-start-column="76" selection-end-line="142" selection-end-column="76" />
           <folding>
             <element signature="method#updateModelClassName#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#updateModelPlayerName#0;class#CharacterActivity#0" expanded="false" />
@@ -2900,6 +2897,11 @@
             <element signature="method#updateModelPlayerMaxHealth#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#updateModelPlayerNextLvlExp#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#updateModelPlayerMoney#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="method#updateUI#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="method#unpackScenarioData#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="method#unpackCompleteScenario#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="method#saveIncompleteScenario#0;class#CharacterActivity#0" expanded="false" />
+            <element signature="e#4791#4792#0" expanded="true" />
             <element signature="method#onActivityResult#0;class#CharacterActivity#0" expanded="false" />
             <element signature="method#addTextWatchers#0;class#CharacterActivity#0" expanded="false" />
           </folding>
@@ -2908,14 +2910,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/Character.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="116" column="92" lean-forward="false" selection-start-line="116" selection-start-column="92" selection-end-line="116" selection-end-column="92" />
+        <state relative-caret-position="374">
+          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#setLevel#0;class#Character#0" expanded="false" />
             <element signature="method#setClassName#0;class#Character#0" expanded="false" />
-            <element signature="e#3777#3778#0" expanded="true" />
-            <element signature="e#3855#3856#0" expanded="true" />
+            <element signature="method#getCurrentScenario#0;class#Character#0" expanded="false" />
+            <element signature="method#writeToParcel#0;class#Character#0" expanded="false" />
+            <element signature="class#2783:3625" expanded="false" />
+            <element signature="e#3818#3819#0" expanded="true" />
+            <element signature="e#3896#3897#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/Scenario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1271">
+          <caret line="126" column="34" lean-forward="true" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
+          <folding>
+            <element signature="method#setLevel#0;class#Scenario#0" expanded="false" />
+            <element signature="method#getScenarioMoneyMultiplier#0;class#Scenario#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ghcharactertracker/com/ghcharactertracker/PlayerContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

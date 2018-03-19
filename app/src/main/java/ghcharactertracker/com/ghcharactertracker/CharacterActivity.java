@@ -112,7 +112,7 @@ public class CharacterActivity extends AppCompatActivity {
 
         boolean scenComp = data.getBooleanExtra(ScenarioActivity.SCENARIO_COMPLETE, false);
         boolean scenSucc = data.getBooleanExtra(ScenarioActivity.SCENARIO_SUCCESSFUL, false);
-        ScenarioModel resultScen = data.getParcelableExtra(ScenarioActivity.SCENARIO);
+        Scenario resultScen = data.getParcelableExtra(ScenarioActivity.SCENARIO);
 
         if (scenComp) {
             unpackCompleteScenario(resultScen, scenSucc);
@@ -121,7 +121,7 @@ public class CharacterActivity extends AppCompatActivity {
         }
     }
 
-    private void unpackCompleteScenario(ScenarioModel scenario, boolean success) {
+    private void unpackCompleteScenario(Scenario scenario, boolean success) {
         player.addMoney(scenario.getLootedMoney());
 
         if (success) {
@@ -130,12 +130,12 @@ public class CharacterActivity extends AppCompatActivity {
             player.addExp(scenario.getExp());
         }
 
-        player.setCurrentScenario(new ScenarioModel(player.getMaxHealth(), 0, 0));
+        player.setCurrentScenario(new Scenario(player.getMaxHealth(), 0, 0));
 
         updateUI();
     }
 
-    private void saveIncompleteScenario(ScenarioModel scenario) {
+    private void saveIncompleteScenario(Scenario scenario) {
         player.setCurrentScenario(scenario);
     }
 

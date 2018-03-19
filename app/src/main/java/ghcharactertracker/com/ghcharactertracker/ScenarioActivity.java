@@ -17,7 +17,7 @@ public class ScenarioActivity extends AppCompatActivity {
     public static final String SCENARIO = "com.ghcharactertracker.ghcharactertracker.SCENARIO";
     public static final String SCENARIO_COMPLETE = "com.ghcharactertracker.ghcharactertracker.SCENARIO_COMPLETE";
     public static final String SCENARIO_SUCCESSFUL = "com.ghcharactertracker.ghcharactertracker.SCENARIO_SUCCESSFUL";
-    ScenarioModel scenario;
+    Scenario scenario;
 
 
     public void onCreate(Bundle savedInstanceState) {

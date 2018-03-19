@@ -11,7 +11,7 @@
     <string name="max_health_label">Max Health</string>
     <string name="xp_label">XP</string>
     <string name="slash_label">\\</string>
-    <string name="new_scenario_label">New Scenario</string>
+    <string name="new_scenario_label">Scenario</string>
     <string name="total_money_label">Money</string>
     <string name="completed_label">Successfully Completed?</string>
     <string name="complete_label">Done</string>

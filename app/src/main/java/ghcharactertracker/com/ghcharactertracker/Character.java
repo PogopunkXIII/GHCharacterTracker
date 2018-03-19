@@ -1,6 +1,5 @@
 package ghcharactertracker.com.ghcharactertracker;
 
-import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -9,14 +8,13 @@ import android.os.Parcelable;
  */
 
 public class Character implements Parcelable{
-    String playerName = "Name";
-    int id = -1;
+    String playerName = "";
     int level, maxHealth, curExp, nextLevelExp, money;
     CharClass charClass;
-    ScenarioModel currentScenario;
+    Scenario currentScenario;
 
     public Character(CharClass charClass) {
-        this.playerName = "Name";
+        this.playerName = "";
         this.charClass = charClass;
         this.level = 0;
         this.curExp = 0;
@@ -24,7 +22,7 @@ public class Character implements Parcelable{
         this.maxHealth = 0;
         this.nextLevelExp = 0;
 
-        currentScenario = new ScenarioModel(maxHealth, 0, 0);
+        currentScenario = null;
     }
     public int getLevel() {
         return level;
@@ -78,13 +76,16 @@ public class Character implements Parcelable{
 
     public String getPlayerName() { return playerName; }
 
-    public int getId() { return id; }
+    public Scenario getCurrentScenario() {
 
-    public void setId(int id) { this.id = id; }
+        if (currentScenario == null) {
+            currentScenario = new Scenario(maxHealth, 0 ,0);
+        }
 
-    public ScenarioModel getCurrentScenario() { return currentScenario; }
+        return currentScenario;
+    }
 
-    public void setCurrentScenario(ScenarioModel currentScenario) { this.currentScenario = currentScenario; }
+    public void setCurrentScenario(Scenario currentScenario) { this.currentScenario = currentScenario; }
 
     public void setPlayerName(String playerName) { this.playerName = playerName; }
 
@@ -101,6 +102,10 @@ public class Character implements Parcelable{
         out.writeInt(curExp);
         out.writeInt(money);
 
+        if (currentScenario == null) {
+            currentScenario = new Scenario(maxHealth, 0 ,0);
+        }
+
         out.writeParcelable(currentScenario, 0);
     }
 
@@ -114,7 +119,7 @@ public class Character implements Parcelable{
             int curExp = in.readInt();
             int money = in.readInt();
 
-            ScenarioModel newScen = in.readParcelable(ScenarioModel.class.getClassLoader());
+            Scenario newScen = in.readParcelable(Scenario.class.getClassLoader());
 
 
             Character newChar = new Character(newCharClass);

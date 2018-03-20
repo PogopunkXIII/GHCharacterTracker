@@ -10,6 +10,7 @@ import android.os.Parcelable;
 public class Scenario implements Parcelable{
     int level, health, exp, moneyTokens = 0;
     private int totalExp, bonusExp, lootedMoney, moneyMultiplier = 0;
+    long id = -1;
 
     public Scenario(int health, int exp, int money) {
         this.health = health;
@@ -82,6 +83,10 @@ public class Scenario implements Parcelable{
         this.updateLootedMoney();
         this.updateTotalExp();
     }
+
+    public long getId() { return id; }
+
+    public void setId(long id) { this.id = id; }
 
     private void updateLootedMoney() {
         this.lootedMoney = moneyTokens * moneyMultiplier;

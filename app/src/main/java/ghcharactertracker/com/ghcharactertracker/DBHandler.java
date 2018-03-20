@@ -19,6 +19,13 @@ public class DBHandler {
         db.execSQL(PlayerContract.ScenarioEntry.OPEN_OR_CREATE_SCENARIOS);
     }
 
+    public static DBHandler getDbHandler(Context context) {
+        if(dbHandler == null)
+            dbHandler = new DBHandler(context);
+
+        return dbHandler;
+    }
+
     public Character addCharacter(Character newChar){
         ContentValues charVals = new ContentValues();
         ContentValues scenVals = new ContentValues();

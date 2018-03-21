@@ -25,6 +25,19 @@ public class Character implements Parcelable{
 
         currentScenario = null;
     }
+
+    public Character() {
+        this.playerName = "";
+        this.charClass = new CharClass(ClassName.Brute);
+        this.level = 0;
+        this.curExp = 0;
+        this.money = 0;
+        this.maxHealth = 0;
+        this.nextLevelExp = 0;
+
+        currentScenario = null;
+    }
+
     public int getLevel() {
         return level;
     }
@@ -71,24 +84,27 @@ public class Character implements Parcelable{
 
     public void setId(long id) { this.id = id; }
 
+    /*
+    public long getScenId() { return scenId; }
+
+    public void setScenId(long scenId) { this.scenId = scenId; }
+    */
+
     public void setClassName(ClassName className) {
         charClass = new CharClass(className);
         this.nextLevelExp = charClass.getLvlUpVal(this.level);
         this.maxHealth = charClass.getMaxHealth(this.level);
     }
 
+    public void setClassName(String name) {
+        charClass.setName(name);
+    }
+
     public ClassName getClassName() { return charClass.getClassName(); }
 
     public String getPlayerName() { return playerName; }
 
-    public Scenario getCurrentScenario() {
-
-        if (currentScenario == null) {
-            currentScenario = new Scenario(maxHealth, 0 ,0);
-        }
-
-        return currentScenario;
-    }
+    public Scenario getCurrentScenario() { return currentScenario; }
 
     public void setCurrentScenario(Scenario currentScenario) { this.currentScenario = currentScenario; }
 
@@ -103,6 +119,7 @@ public class Character implements Parcelable{
     public void writeToParcel(Parcel out, int flags) {
         out.writeString(playerName);
         out.writeString(charClass.name.toString());
+        out.writeLong(id);
         out.writeInt(level);
         out.writeInt(curExp);
         out.writeInt(money);
@@ -120,6 +137,7 @@ public class Character implements Parcelable{
 
             CharClass newCharClass = new CharClass(ClassName.valueOf(in.readString()));
 
+            long id = in.readLong();
             int level = in.readInt();
             int curExp = in.readInt();
             int money = in.readInt();
@@ -128,10 +146,12 @@ public class Character implements Parcelable{
 
 
             Character newChar = new Character(newCharClass);
+            newChar.setId(id);
             newChar.setPlayerName(playerName);
             newChar.setLevel(level);
             newChar.setCurExp(curExp);
             newChar.setMoney(money);
+
             newChar.setCurrentScenario(newScen);
 
             return newChar;

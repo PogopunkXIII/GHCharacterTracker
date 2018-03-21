@@ -14,11 +14,14 @@ import java.util.List;
 
 public class MainActivity extends ListActivity {
     public static final String CHARACTER_INPUT = "com.ghcharctertracker.ghcharactertracker.CHARACTER_INPUT";
+    private static final String REQUEST_CODE = "com.ghcharctertracker.ghcharactertracker.REQUEST_CODE";
     private static final int NEW_CHARACTER_REQUEST_CODE = 0;
     private static final int EXISTING_CHARACTER_REQUEST_CODE = 1;
+
     Character savedChar = null;
     ArrayList<Character> characters = new ArrayList<>();
     ArrayAdapter<Character> adapter;
+    DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +43,19 @@ public class MainActivity extends ListActivity {
                 startCharacterActivity(selectedChar, false);
             }
         });
+
+        dbHandler = DBHandler.getDbHandler(this);
+
+        characters = dbHandler.getAllCharacters();
+        adapter.notifyDataSetChanged();
     }
 
     public void newCharacter(View v) {
         Character character = new Character(new CharClass(ClassName.Brute));
+        Scenario scenario = new Scenario();
+        dbHandler.addCharacter(character);
+        dbHandler.addScenario(scenario);
+        character.setCurrentScenario(scenario);
         startCharacterActivity(character, true);
     }
 
@@ -53,8 +65,10 @@ public class MainActivity extends ListActivity {
         characterIntent.putExtra(CHARACTER_INPUT, input);
 
         if (newChar) {
+            characterIntent.putExtra(REQUEST_CODE, NEW_CHARACTER_REQUEST_CODE);
             startActivityForResult(characterIntent, NEW_CHARACTER_REQUEST_CODE);
         } else {
+            characterIntent.putExtra(REQUEST_CODE, EXISTING_CHARACTER_REQUEST_CODE);
             startActivityForResult(characterIntent, EXISTING_CHARACTER_REQUEST_CODE);
         }
     }
@@ -74,12 +88,14 @@ public class MainActivity extends ListActivity {
     private void addCharacter(Intent characterResult) {
         Character result = (Character) characterResult.getParcelableExtra(CharacterActivity.PLAYER_CHAR);
         characters.add(result);
+        dbHandler.updateCharacter(result);
         adapter.notifyDataSetChanged();
     }
 
     private void saveCharacter(Intent characterResult) {
         Character result = (Character) characterResult.getParcelableExtra(CharacterActivity.PLAYER_CHAR);
         characters.set(characters.indexOf(savedChar), result);
+        dbHandler.updateCharacter(result);
         adapter.notifyDataSetChanged();
     }
 }

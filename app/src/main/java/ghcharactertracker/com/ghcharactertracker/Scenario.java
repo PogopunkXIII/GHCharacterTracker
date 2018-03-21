@@ -127,6 +127,7 @@ public class Scenario implements Parcelable{
     @Override
     public void writeToParcel(Parcel out, int flags) {
         out.writeInt(level);
+        out.writeLong(id);
         out.writeInt(health);
         out.writeInt(exp);
         out.writeInt(moneyTokens);
@@ -136,12 +137,14 @@ public class Scenario implements Parcelable{
         public Scenario createFromParcel(Parcel in) {
 
             int level = in.readInt();
+            long id = in.readLong();
             int health = in.readInt();
             int exp = in.readInt();
             int moneyTokens = in.readInt();
 
             Scenario newScen = new Scenario(health, exp, moneyTokens);
             newScen.setLevel(level);
+            newScen.setId(id);
 
             return newScen;
         }

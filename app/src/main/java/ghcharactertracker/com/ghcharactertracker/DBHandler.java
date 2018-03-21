@@ -2,7 +2,10 @@ package ghcharactertracker.com.ghcharactertracker;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
 
 /**
  * Created by jesse.mailhot on 3/20/2018.
@@ -28,15 +31,24 @@ public class DBHandler {
 
     public Character addCharacter(Character newChar){
         ContentValues charVals = new ContentValues();
-        ContentValues scenVals = new ContentValues();
+
 
         charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_PLAYER_NAME, newChar.getPlayerName());
         charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_CLASS_NAME, newChar.getClassName().toString());
         charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_LEVEL, newChar.getLevel());
         charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_EXP, newChar.getCurExp());
         charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_MONEY, newChar.getMoney());
+        //charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_SCENARIO_INDEX, -1);
 
-        Scenario newScen = newChar.getCurrentScenario();
+        long charId = db.insert(PlayerContract.PlayerEntry.TABLE_NAME, null, charVals);
+
+        newChar.setId(charId);
+
+        return newChar;
+    }
+
+    public Scenario addScenario(Scenario newScen) {
+        ContentValues scenVals = new ContentValues();
 
         scenVals.put(PlayerContract.ScenarioEntry.COLUMN_NAME_LEVEL, newScen.getLevel());
         scenVals.put(PlayerContract.ScenarioEntry.COLUMN_NAME_HEALTH, newScen.getHealth());
@@ -46,15 +58,67 @@ public class DBHandler {
         long scenId = db.insert(PlayerContract.ScenarioEntry.TABLE_NAME, null, scenVals);
 
         newScen.setId(scenId);
-        newChar.setCurrentScenario(newScen);
 
-        charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_SCENARIO_INDEX, scenId);
+        return newScen;
+    }
 
-        long charId = db.insert(PlayerContract.PlayerEntry.TABLE_NAME, null, charVals);
+    public ArrayList<Character> getAllCharacters() {
+        ArrayList<Character> characters = new ArrayList<>();
+        String charSelectQuery = "SELECT * FROM " + PlayerContract.PlayerEntry.TABLE_NAME;
+        String scenSelectQuery = "SELECT ? FROM " + PlayerContract.ScenarioEntry.TABLE_NAME;
 
-        newChar.setId(charId);
+        Cursor c = db.rawQuery(charSelectQuery, null);
 
-        return newChar;
+        if (c.moveToFirst()) {
+            do {
+                //there's gotta be a better way to unpack a shitton of data like this. if this
+                //db had hundreds of columns I'd be fucked
+                Character newChar = new Character();
+                newChar.setId(c.getInt(
+                        c.getColumnIndex("id")));
+                newChar.setPlayerName(c.getString(
+                        c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_PLAYER_NAME)));
+                newChar.setClassName(c.getString(
+                        c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_CLASS_NAME)));
+                newChar.setLevel(c.getInt(
+                        c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_LEVEL)));
+                newChar.setCurExp(c.getInt(
+                        c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_EXP)));
+                newChar.setMoney(c.getInt(
+                        c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_MONEY)));
+
+                /*
+                //try to grab the scenario that the character has stored
+                String index = String.valueOf(c.getInt(
+                        c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_SCENARIO_INDEX)));
+                String[] args = new String[] {index};
+                Cursor scenCursor = db.rawQuery(scenSelectQuery, args);
+
+                //only unpack the scenario if there's one saved, if there isn't one saved then
+                //this character has never played a scenario
+                if (scenCursor.moveToFirst() && scenCursor.getCount() == 1) {
+                    Scenario newScen = new Scenario(newChar.getMaxHealth(), 0, 0);
+
+                    newScen.setId(scenCursor.getInt(
+                            scenCursor.getColumnIndex("id")));
+                    newScen.setHealth(scenCursor.getInt(
+                            c.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_HEALTH)));
+                    newScen.setExp(scenCursor.getInt(
+                            c.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_EXP)));
+                    newScen.setMoneyTokens(scenCursor.getInt(
+                            c.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_MONEY_TOKENS)));
+                    newScen.setLevel(c.getInt(
+                            c.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_MONEY_TOKENS)));
+
+                    newChar.setCurrentScenario(newScen);
+                }
+                */
+
+                characters.add(newChar);
+            } while(c.moveToNext());
+        }
+
+        return characters;
     }
 
     public void updateCharacter(Character inChar) {
@@ -65,10 +129,15 @@ public class DBHandler {
         vals.put(PlayerContract.PlayerEntry.COLUMN_NAME_LEVEL, inChar.getLevel());
         vals.put(PlayerContract.PlayerEntry.COLUMN_NAME_EXP, inChar.getCurExp());
         vals.put(PlayerContract.PlayerEntry.COLUMN_NAME_MONEY, inChar.getMoney());
-        vals.put(PlayerContract.PlayerEntry.COLUMN_NAME_SCENARIO_INDEX, inChar.getCurrentScenario().getId());
 
-        db.update(PlayerContract.PlayerEntry.TABLE_NAME, vals, "id = ?",
-                new String[]{ String.valueOf(inChar.getId()) });
+        //we need to make sure that this character has played a scenario. the character
+        //may not have a scenario if he hasn't played one yet
+        if (inChar.getCurrentScenario() != null )
+            vals.put(PlayerContract.PlayerEntry.COLUMN_NAME_SCENARIO_INDEX, inChar.getCurrentScenario().getId());
+
+        String[] id = new String[] { String.valueOf(inChar.getId()) };
+
+        db.update(PlayerContract.PlayerEntry.TABLE_NAME, vals, "id = ?", id);
     }
 
     public void updateScenario(Scenario inScen) {

@@ -21,18 +21,18 @@ public class CharacterActivity extends AppCompatActivity {
 
     private static final int SCENARIO_REQUEST_CODE = 0;
 
-
-    Character player;
+    Character character;
     EditText playerName, playerLevel, playerCurExp, playerMaxHealth, playerNextLvlExp, playerMoney;
     Spinner classNameSpinner;
+    DBHandler dbHandler;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.character_sheet);
 
         Intent intent = getIntent();
-        player = (Character) intent.getParcelableExtra(MainActivity.CHARACTER_INPUT);
-        //player = new Character(new CharClass(ClassName.Brute));
+        character = (Character) intent.getParcelableExtra(MainActivity.CHARACTER_INPUT);
+        //character = new Character(new CharClass(ClassName.Brute));
 
         classNameSpinner = (Spinner) findViewById(R.id.classNameSpinner);
         classNameSpinner.setAdapter(new ArrayAdapter<ClassName>(this,
@@ -46,66 +46,73 @@ public class CharacterActivity extends AppCompatActivity {
         playerNextLvlExp = (EditText) findViewById(R.id.playerNextLvlExp);
         playerMoney = (EditText) findViewById(R.id.playerCurrentMoney);
 
+        dbHandler = DBHandler.getDbHandler(this);
+
         addSpinnerWatcher();
         addTextWatchers();
         updateUI();
     }
 
     private void updateModelClassName(ClassName className) {
-        if (className != player.getClassName()) {
-            player.setClassName(className);
+        if (className != character.getClassName()) {
+            character.setClassName(className);
             updateUI();
+            dbHandler.updateCharacter(character);
         }
     }
 
     private void updateModelPlayerName(String name) {
-        if (!player.getPlayerName().equals(name)) {
-            player.setPlayerName(name);
+        if (!character.getPlayerName().equals(name)) {
+            character.setPlayerName(name);
+            dbHandler.updateCharacter(character);
         }
     }
 
     private void updateModelPlayerLevel(int level) {
-        if (player.getLevel() != level && level >= 0 && level <= 9) {
-            player.setLevel(level);
-            //player.getCurrentScenario().setHealth(player.getMaxHealth());
+        if (character.getLevel() != level && level >= 0 && level <= 9) {
+            character.setLevel(level);
             updateUI();
+            dbHandler.updateCharacter(character);
         }
     }
 
     private void updateModelPlayerCurExp(int curExp) {
-        if (player.getCurExp() != curExp) {
-            player.setCurExp(curExp);
+        if (character.getCurExp() != curExp) {
+            character.setCurExp(curExp);
+            dbHandler.updateCharacter(character);
         }
     }
 
     private void updateModelPlayerMaxHealth(int maxHealth) {
-        if (player.getMaxHealth() != maxHealth) {
-            player.setMaxHealth(maxHealth);
-            //player.getCurrentScenario().setHealth(maxHealth);
+        if (character.getMaxHealth() != maxHealth) {
+            character.setMaxHealth(maxHealth);
+            dbHandler.updateCharacter(character);
         }
     }
 
     private void updateModelPlayerNextLvlExp(int nextLvlExp) {
-        if (player.getNextLevelExp() != nextLvlExp) {
-            player.setNextLevelExp(nextLvlExp);
+        if (character.getNextLevelExp() != nextLvlExp) {
+            character.setNextLevelExp(nextLvlExp);
+            dbHandler.updateCharacter(character);
         }
     }
 
     private void updateModelPlayerMoney(int money) {
-        if (player.getMoney() != money) {
-            player.setMoney(money);
+        if (character.getMoney() != money) {
+            character.setMoney(money);
+            dbHandler.updateCharacter(character);
         }
     }
 
     private void updateUI() {
-        playerName.setText(player.getPlayerName());
-        playerLevel.setText(Integer.toString(player.getLevel()));
-        playerCurExp.setText(Integer.toString(player.getCurExp()));
-        playerMaxHealth.setText(Integer.toString(player.getMaxHealth()));
-        playerNextLvlExp.setText(Integer.toString(player.getNextLevelExp()));
-        playerMoney.setText(Integer.toString(player.getMoney()));
+        playerName.setText(character.getPlayerName());
+        playerLevel.setText(Integer.toString(character.getLevel()));
+        playerCurExp.setText(Integer.toString(character.getCurExp()));
+        playerMaxHealth.setText(Integer.toString(character.getMaxHealth()));
+        playerNextLvlExp.setText(Integer.toString(character.getNextLevelExp()));
+        playerMoney.setText(Integer.toString(character.getMoney()));
 
-        classNameSpinner.setSelection(ClassName.valueOf(player.getClassName().toString()).ordinal());
+        classNameSpinner.setSelection(ClassName.valueOf(character.getClassName().toString()).ordinal());
     }
 
     private void unpackScenarioData(Intent data) {
@@ -122,26 +129,50 @@ public class CharacterActivity extends AppCompatActivity {
     }
 
     private void unpackCompleteScenario(Scenario scenario, boolean success) {
-        player.addMoney(scenario.getLootedMoney());
+        character.addMoney(scenario.getLootedMoney());
 
         if (success) {
-            player.addExp(scenario.getTotalExp());
+            character.addExp(scenario.getTotalExp());
         } else {
-            player.addExp(scenario.getExp());
+            character.addExp(scenario.getExp());
         }
 
-        player.setCurrentScenario(new Scenario(player.getMaxHealth(), 0, 0));
+        dbHandler.updateCharacter(character);
+
+        //we need to make sure when we erase all the scenario data that we retain the
+        //db index
+        long id = scenario.getId();
+        Scenario newScen = new Scenario(character.getMaxHealth(), 0, 0);
+        newScen.setId(id);
+
+        dbHandler.updateScenario(newScen);
+        character.setCurrentScenario(newScen);
 
         updateUI();
     }
 
     private void saveIncompleteScenario(Scenario scenario) {
-        player.setCurrentScenario(scenario);
+        character.setCurrentScenario(scenario);
+        dbHandler.updateScenario(scenario);
     }
 
     public void newScenario(View v) {
+        if (character.getCurrentScenario() == null) {
+            Scenario newScen = new Scenario(character.getMaxHealth(), 0, 0);
+            character.setCurrentScenario(newScen);
+
+            dbHandler.addScenario(newScen);
+            dbHandler.updateCharacter(character);
+
+            startScenarioActivity(newScen);
+        }
+
+        startScenarioActivity(character.getCurrentScenario());
+    }
+
+    private void startScenarioActivity(Scenario scen) {
         Intent newScenarioIntent = new Intent(this, ScenarioActivity.class);
-        newScenarioIntent.putExtra(ScenarioActivity.SCENARIO, player.getCurrentScenario());
+        newScenarioIntent.putExtra(ScenarioActivity.SCENARIO, scen);
         startActivityForResult(newScenarioIntent, SCENARIO_REQUEST_CODE);
     }
 
@@ -260,7 +291,7 @@ public class CharacterActivity extends AppCompatActivity {
     private void packupCharacterData() {
         Intent characterResult = new Intent();
 
-        characterResult.putExtra(PLAYER_CHAR, player);
+        characterResult.putExtra(PLAYER_CHAR, character);
 
         setResult(Activity.RESULT_OK, characterResult);
 

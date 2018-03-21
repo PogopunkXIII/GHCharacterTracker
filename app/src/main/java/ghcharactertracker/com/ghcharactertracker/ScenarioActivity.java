@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -17,7 +19,9 @@ public class ScenarioActivity extends AppCompatActivity {
     public static final String SCENARIO = "com.ghcharactertracker.ghcharactertracker.SCENARIO";
     public static final String SCENARIO_COMPLETE = "com.ghcharactertracker.ghcharactertracker.SCENARIO_COMPLETE";
     public static final String SCENARIO_SUCCESSFUL = "com.ghcharactertracker.ghcharactertracker.SCENARIO_SUCCESSFUL";
+    EditText levelText, healthText, expText, moneyText;
     Scenario scenario;
+    DBHandler dbHandler;
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -27,16 +31,24 @@ public class ScenarioActivity extends AppCompatActivity {
         Intent intent = getIntent();
         scenario = intent.getParcelableExtra(SCENARIO);
 
+        levelText = (EditText) findViewById(R.id.scenarioLevel);
+        healthText = (EditText) findViewById(R.id.scenarioHealth);
+        expText = (EditText) findViewById(R.id.scenarioExp);
+        moneyText = (EditText) findViewById(R.id.scenarioMoney);
+
+        dbHandler = DBHandler.getDbHandler(this);
+
+        addTextWatchers();
         updateUI();
     }
 
     public void changeHealth(View v) {
         switch(v.getId()){
             case R.id.healthAdd:
-                scenario.incHealth();
+                updateModelScenarioHealth(scenario.getHealth() + 1);
                 break;
             case R.id.healthSub:
-                scenario.decHealth();
+                updateModelScenarioHealth(scenario.getHealth() - 1);
                 break;
         }
 
@@ -46,10 +58,10 @@ public class ScenarioActivity extends AppCompatActivity {
     public void changeExp(View v) {
         switch(v.getId()){
             case R.id.expAdd:
-                scenario.incExp();
+                updateModelScenarioExp(scenario.getExp() + 1);
                 break;
             case R.id.expSub:
-                scenario.decExp();
+                updateModelScenarioExp(scenario.getExp() - 1);
                 break;
         }
 
@@ -59,10 +71,10 @@ public class ScenarioActivity extends AppCompatActivity {
     public void changeMoney(View v) {
         switch(v.getId()){
             case R.id.moneyAdd:
-                scenario.incMoney();
+                updateModelScenarioMoney(scenario.getMoneyTokens() + 1);
                 break;
             case R.id.moneySub:
-                scenario.decMoney();
+                updateModelScenarioMoney(scenario.getMoneyTokens() - 1);
                 break;
         }
 
@@ -77,29 +89,107 @@ public class ScenarioActivity extends AppCompatActivity {
     }
 
     private void updateHealthUI() {
-        EditText healthText = (EditText) findViewById(R.id.scenarioHealth);
-
         healthText.setText(Integer.toString(scenario.getHealth()));
     }
 
     private void updateExpUI() {
-        EditText expText = (EditText) findViewById(R.id.scenarioExp);
-
         expText.setText(Integer.toString(scenario.getExp()));
     }
 
     private void updateMoneyUI() {
-        EditText moneyText = (EditText) findViewById(R.id.scenarioMoney);
-
         moneyText.setText(Integer.toString(scenario.getMoneyTokens()));
     }
 
     private void updateLevelUI() {
-        EditText levelText = (EditText) findViewById(R.id.scenarioLevel);
-
         if (scenario.getLevel() > 0) {
             levelText.setText(Integer.toString(scenario.getLevel()));
         }
+    }
+
+    private void updateModelScenarioLevel(int level) {
+        if(scenario.getLevel() != level) {
+            scenario.setLevel(level);
+            dbHandler.updateScenario(scenario);
+        }
+    }
+
+    private void updateModelScenarioHealth(int health) {
+        if(scenario.getHealth() != health) {
+            scenario.setHealth(health);
+            dbHandler.updateScenario(scenario);
+        }
+    }
+
+    private void updateModelScenarioExp(int exp) {
+        if(scenario.getExp() != exp) {
+            scenario.setExp(exp);
+            dbHandler.updateScenario(scenario);
+        }
+    }
+
+    private void updateModelScenarioMoney(int money) {
+        if(scenario.getMoneyTokens() != money) {
+            scenario.setMoneyTokens(money);
+            dbHandler.updateScenario(scenario);
+        }
+    }
+
+    private void addTextWatchers() {
+        levelText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() > 0) {
+                    updateModelScenarioLevel(Integer.parseInt(editable.toString()));
+                }
+            }
+        });
+
+        healthText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() > 0) {
+                    updateModelScenarioHealth(Integer.parseInt(editable.toString()));
+                }
+            }
+        });
+
+        expText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() > 0) {
+                    updateModelScenarioExp(Integer.parseInt(editable.toString()));
+                }
+            }
+        });
+
+        moneyText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() > 0) {
+                    updateModelScenarioMoney(Integer.parseInt(editable.toString()));
+                }
+            }
+        });
     }
 
     public void scenarioCompleted(View v) {
@@ -107,19 +197,19 @@ public class ScenarioActivity extends AppCompatActivity {
     }
 
     private void saveScenarioData(boolean scenarioCompleted) {
-        EditText scenarioLvl = (EditText) findViewById(R.id.scenarioLevel);
+        //EditText scenarioLvl = (EditText) findViewById(R.id.levelText);
         CheckBox scenarioSuccessful = (CheckBox) findViewById(R.id.scenarioSuccessful);
 
-        if (scenarioLvl.getText().toString().isEmpty()) {
+        if (levelText.getText().toString().isEmpty()) {
             Toast.makeText(this,"Please enter a scenario Level", Toast.LENGTH_LONG).show();
             return;
         }
 
         boolean scenSucc = scenarioSuccessful.isChecked();
-        int scenLvl = Integer.parseInt(scenarioLvl.getText().toString());
+        //int scenLvl = Integer.parseInt(scenarioLvl.getText().toString());
 
         //setting the level will calculate
-        scenario.setLevel(scenLvl);
+        //scenario.setLevel(scenLvl);
 
         Intent scenarioResult = new Intent();
 
@@ -127,25 +217,6 @@ public class ScenarioActivity extends AppCompatActivity {
         scenarioResult.putExtra(SCENARIO_COMPLETE, scenarioCompleted);
         scenarioResult.putExtra(SCENARIO_SUCCESSFUL, scenSucc);
         scenarioResult.putExtra(SCENARIO, scenario);
-        /*
-        scenarioResult.putExtra(SCENARIO_LEVEL, scenario.getLevel());
-        scenarioResult.putExtra(SCENARIO_HEALTH, scenario.getHealth());
-
-        if (scenSucc) {
-            scenarioResult.putExtra(SCENARIO_MONEY, scenario.getLootedMoney());
-        }
-        else {
-            scenarioResult.putExtra(SCENARIO_MONEY, scenario.getMoneyTokens());
-        }
-
-
-        if (scenSucc) {
-            scenarioResult.putExtra(SCENARIO_EXP, scenario.getTotalExp());
-        }
-        else {
-            scenarioResult.putExtra(SCENARIO_EXP, scenario.getExp());
-        }
-        */
 
         setResult(Activity.RESULT_OK, scenarioResult);
 

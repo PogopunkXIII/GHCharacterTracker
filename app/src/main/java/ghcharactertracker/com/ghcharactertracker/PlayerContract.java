@@ -41,7 +41,7 @@ public final class PlayerContract {
                 + TABLE_NAME
                 + "(id INTEGER PRIMARY KEY,"
                 + COLUMN_NAME_LEVEL + " INT,"
-                + COLUMN_NAME_HEALTH + " INT"
+                + COLUMN_NAME_HEALTH + " INT,"
                 + COLUMN_NAME_EXP + " INT,"
                 + COLUMN_NAME_MONEY_TOKENS + " INT)";
     }

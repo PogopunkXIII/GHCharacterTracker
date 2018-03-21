@@ -44,10 +44,25 @@ public class MainActivity extends ListActivity {
             }
         });
 
-        dbHandler = DBHandler.getDbHandler(this);
+        /*
+        charList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> charList, View view, int position, long id) {
+                Character selectedChar = (Character) charList.getItemAtPosition(position);
+                deleteSelectedChar(selectedChar);
+                return true;
+            }
+        });
+        */
 
-        characters = dbHandler.getAllCharacters();
+        dbHandler = DBHandler.getDbHandler(this);
+        characters = dbHandler.getAllCharacters(characters);
         adapter.notifyDataSetChanged();
+    }
+
+    public void deleteSelectedChar(Character rekt) {
+        characters.remove(rekt);
+        dbHandler.deleteCharacter(rekt);
     }
 
     public void newCharacter(View v) {

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -62,8 +63,7 @@ public class DBHandler {
         return newScen;
     }
 
-    public ArrayList<Character> getAllCharacters() {
-        ArrayList<Character> characters = new ArrayList<>();
+    public ArrayList<Character> getAllCharacters(ArrayList<Character> characters) {
         String charSelectQuery = "SELECT * FROM " + PlayerContract.PlayerEntry.TABLE_NAME;
         String scenSelectQuery = "SELECT ? FROM " + PlayerContract.ScenarioEntry.TABLE_NAME;
 

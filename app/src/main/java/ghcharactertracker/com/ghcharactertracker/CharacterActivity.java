@@ -157,6 +157,7 @@ public class CharacterActivity extends AppCompatActivity {
     }
 
     public void newScenario(View v) {
+        /*
         if (character.getCurrentScenario() == null) {
             Scenario newScen = new Scenario(character.getMaxHealth(), 0, 0);
             character.setCurrentScenario(newScen);
@@ -166,6 +167,7 @@ public class CharacterActivity extends AppCompatActivity {
 
             startScenarioActivity(newScen);
         }
+        */
 
         startScenarioActivity(character.getCurrentScenario());
     }

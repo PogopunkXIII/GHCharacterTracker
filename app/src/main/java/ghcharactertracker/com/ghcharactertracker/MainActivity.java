@@ -1,7 +1,9 @@
 package ghcharactertracker.com.ghcharactertracker;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,10 +20,11 @@ public class MainActivity extends ListActivity {
     private static final int NEW_CHARACTER_REQUEST_CODE = 0;
     private static final int EXISTING_CHARACTER_REQUEST_CODE = 1;
 
-    Character savedChar = null;
+    Character savedChar, charToDelete = null;
     ArrayList<Character> characters = new ArrayList<>();
     ArrayAdapter<Character> adapter;
     DBHandler dbHandler;
+    boolean delete = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,25 +47,45 @@ public class MainActivity extends ListActivity {
             }
         });
 
-        /*
+
         charList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> charList, View view, int position, long id) {
-                Character selectedChar = (Character) charList.getItemAtPosition(position);
-                deleteSelectedChar(selectedChar);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Are you sure you want to delete this character?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
+                                MainActivity.this.deleteSelectedChar();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog rUSure = builder.create();
+                rUSure.show();
+
+                MainActivity.this.charToDelete = (Character) charList.getItemAtPosition(position);
+
                 return true;
             }
         });
-        */
+
 
         dbHandler = DBHandler.getDbHandler(this);
         characters = dbHandler.getAllCharacters(characters);
         adapter.notifyDataSetChanged();
     }
 
-    public void deleteSelectedChar(Character rekt) {
-        characters.remove(rekt);
-        dbHandler.deleteCharacter(rekt);
+    public void deleteSelectedChar() {
+        characters.remove(charToDelete);
+        dbHandler.deleteCharacter(charToDelete);
+        adapter.notifyDataSetChanged();
     }
 
     public void newCharacter(View v) {

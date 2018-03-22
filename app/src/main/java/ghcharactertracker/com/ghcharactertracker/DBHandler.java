@@ -65,7 +65,7 @@ public class DBHandler {
 
     public ArrayList<Character> getAllCharacters(ArrayList<Character> characters) {
         String charSelectQuery = "SELECT * FROM " + PlayerContract.PlayerEntry.TABLE_NAME;
-        String scenSelectQuery = "SELECT ? FROM " + PlayerContract.ScenarioEntry.TABLE_NAME;
+        String scenSelectQuery = "SELECT * FROM " + PlayerContract.ScenarioEntry.TABLE_NAME + " WHERE id=?";
 
         Cursor c = db.rawQuery(charSelectQuery, null);
 
@@ -87,7 +87,6 @@ public class DBHandler {
                 newChar.setMoney(c.getInt(
                         c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_MONEY)));
 
-                /*
                 //try to grab the scenario that the character has stored
                 String index = String.valueOf(c.getInt(
                         c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_SCENARIO_INDEX)));
@@ -102,17 +101,16 @@ public class DBHandler {
                     newScen.setId(scenCursor.getInt(
                             scenCursor.getColumnIndex("id")));
                     newScen.setHealth(scenCursor.getInt(
-                            c.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_HEALTH)));
+                            scenCursor.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_HEALTH)));
                     newScen.setExp(scenCursor.getInt(
-                            c.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_EXP)));
+                            scenCursor.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_EXP)));
                     newScen.setMoneyTokens(scenCursor.getInt(
-                            c.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_MONEY_TOKENS)));
-                    newScen.setLevel(c.getInt(
-                            c.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_MONEY_TOKENS)));
+                            scenCursor.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_MONEY_TOKENS)));
+                    newScen.setLevel(scenCursor.getInt(
+                            scenCursor.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_LEVEL)));
 
                     newChar.setCurrentScenario(newScen);
                 }
-                */
 
                 characters.add(newChar);
             } while(c.moveToNext());
@@ -132,8 +130,7 @@ public class DBHandler {
 
         //we need to make sure that this character has played a scenario. the character
         //may not have a scenario if he hasn't played one yet
-        if (inChar.getCurrentScenario() != null )
-            vals.put(PlayerContract.PlayerEntry.COLUMN_NAME_SCENARIO_INDEX, inChar.getCurrentScenario().getId());
+        vals.put(PlayerContract.PlayerEntry.COLUMN_NAME_SCENARIO_INDEX, inChar.getCurrentScenario().getId());
 
         String[] id = new String[] { String.valueOf(inChar.getId()) };
 

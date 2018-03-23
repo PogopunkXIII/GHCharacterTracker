@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">GHCharacterTracker</string>
+    <string name="minus_label">-</string>
+    <string name="plus_label">+</string>
+    <string name="zero_label">0</string>
+    <string name="health_label">Health</string>
+    <string name="exp_label">Exp</string>
+    <string name="money_tokens_label">Money Tokens</string>
+    <string name="add_char_button">Add New Character</string>
+    <string name="level_label">lvl:</string>
+    <string name="max_health_label">Max Health</string>
+    <string name="xp_label">XP</string>
+    <string name="slash_label">\\</string>
+    <string name="new_scenario_label">Scenario</string>
+    <string name="total_money_label">Money</string>
+    <string name="completed_label">Successfully Completed?</string>
+    <string name="complete_label">Done</string>
+    <string name="scenario_level_label">Scenario Level</string>
+    <string name="name_label">Name</string>
+</resources>

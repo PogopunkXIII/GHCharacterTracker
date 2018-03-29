@@ -144,7 +144,6 @@ public class Character implements Parcelable{
 
             Scenario newScen = in.readParcelable(Scenario.class.getClassLoader());
 
-
             Character newChar = new Character(newCharClass);
             newChar.setId(id);
             newChar.setPlayerName(playerName);

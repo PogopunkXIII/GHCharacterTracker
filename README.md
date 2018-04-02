@@ -31,9 +31,9 @@ into the character sheet.
 - ~~Refactor Scenario Data retaining to use a parcelable ScenarioModel object instead of passing individual fields back and forth~~
 - ~~Persistent memory for characters (and by extension, unfinished scenarios for those characters) through app close/reopen~~
 - **CODE REVIEW WITH THE BOIS**
+- Refactor into MVVM/MVC/VIPER
 
 ### Up Next:
-- Refactor into MVVM/MVC/VIPER
 - Learn proper UI/UX design and rebuild/retool UI (dark theme?)
 - Expand Character sheet to track perks
 - Expand Character sheet to track Bonus Perk checks
@@ -44,3 +44,4 @@ into the character sheet.
 - Pressing the "soft" back button in the top left of the Scenario tracker erases all character data from the character sheet
 - Pressing the "soft" back button in the top left of the Character Sheet erases all characters saved in the main list (this should be fixed with persistant memory implementation?)
 - The first time you start a scenario activity with a brand new character the MAX_HEALTH isn't properly passed into the scenario. This occurs because the scenario is created prior to the character having a meaningful level so we don't know what the max health should be. it defaults to 0. After the first scenario, as long as the character has a meaningful level, the max health will be auto set.
+- Trying to delete a character with a blank name field results in a crash... whoopsie

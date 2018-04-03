@@ -22,7 +22,7 @@
         android:layout_marginRight="16dp"
         android:clickable="true"
         android:onClick="newCharacter"
-        android:src="@drawable/ic_add_black_24dp"
+        android:src="@drawable/ic_brute_black"
         app:elevation="4dp"/>
 
 

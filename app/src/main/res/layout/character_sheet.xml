@@ -157,6 +157,7 @@
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="number"
+        android:selectAllOnFocus="true"
         android:text="@string/zero_label"
         android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView8"

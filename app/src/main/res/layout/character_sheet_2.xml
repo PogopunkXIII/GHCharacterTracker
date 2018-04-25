@@ -14,19 +14,19 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:onClick="expandMenu"
-        android:src="@drawable/ic_brute_black"
+        fab:fab_icon="@drawable/ic_brute_black"
         app:elevation="4dp">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_scoundrel_black"
+            app:fab_icon="@drawable/ic_scoundrel_black"
             fab:fab_size="mini"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_tinkerer_black"
+            fab:fab_icon="@drawable/ic_tinkerer_black"
             fab:fab_size="mini"/>
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>

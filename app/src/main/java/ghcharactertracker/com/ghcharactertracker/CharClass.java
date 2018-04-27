@@ -5,9 +5,9 @@ package ghcharactertracker.com.ghcharactertracker;
  */
 
 public class CharClass {
-    ClassName name;
-    int[] healthVals;
-    int[] lvlUpVals;
+    private ClassName name;
+    private int[] healthVals;
+    private int[] lvlUpVals;
 
     public CharClass(ClassName name) {
         this.name = name;
@@ -38,8 +38,6 @@ public class CharClass {
         return vals;
     }
 
-    public ClassName getName() { return name; }
-
     public void setName(ClassName name) { this.name = name; }
     public void setName(String name) { this.name = ClassName.valueOf(name); }
     public void setName(int i) { this.name = ClassName.values()[i]; }
@@ -56,12 +54,12 @@ public class CharClass {
         return vals;
     }
 
-    public int getMaxHealth(int level) {
+    public int getMaxHealthForLvl(int level) {
         return healthVals[level];
     }
 
     //returns the exp to get to the next level
-    public int getLvlUpVal(int level) {
+    public int getLvlUpExp(int level) {
         return lvlUpVals[level];
     }
 }

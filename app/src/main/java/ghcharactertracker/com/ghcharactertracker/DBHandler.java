@@ -31,15 +31,7 @@ public class DBHandler {
     }
 
     public Character addCharacter(Character newChar){
-        ContentValues charVals = new ContentValues();
-
-
-        charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_PLAYER_NAME, newChar.getPlayerName());
-        charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_CLASS_NAME, newChar.getClassName().toString());
-        charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_LEVEL, newChar.getLevel());
-        charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_EXP, newChar.getCurExp());
-        charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_MONEY, newChar.getMoney());
-        //charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_SCENARIO_INDEX, -1);
+        ContentValues charVals = packupCharacter(newChar);
 
         long charId = db.insert(PlayerContract.PlayerEntry.TABLE_NAME, null, charVals);
 
@@ -49,12 +41,7 @@ public class DBHandler {
     }
 
     public Scenario addScenario(Scenario newScen) {
-        ContentValues scenVals = new ContentValues();
-
-        scenVals.put(PlayerContract.ScenarioEntry.COLUMN_NAME_LEVEL, newScen.getLevel());
-        scenVals.put(PlayerContract.ScenarioEntry.COLUMN_NAME_HEALTH, newScen.getHealth());
-        scenVals.put(PlayerContract.ScenarioEntry.COLUMN_NAME_EXP, newScen.getExp());
-        scenVals.put(PlayerContract.ScenarioEntry.COLUMN_NAME_MONEY_TOKENS, newScen.getMoneyTokens());
+        ContentValues scenVals = packupScenario(newScen);
 
         long scenId = db.insert(PlayerContract.ScenarioEntry.TABLE_NAME, null, scenVals);
 
@@ -73,19 +60,14 @@ public class DBHandler {
             do {
                 //there's gotta be a better way to unpack a shitton of data like this. if this
                 //db had hundreds of columns I'd be fucked
-                Character newChar = new Character();
-                newChar.setId(c.getInt(
-                        c.getColumnIndex("id")));
-                newChar.setPlayerName(c.getString(
-                        c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_PLAYER_NAME)));
-                newChar.setClassName(c.getString(
-                        c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_CLASS_NAME)));
-                newChar.setLevel(c.getInt(
-                        c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_LEVEL)));
-                newChar.setCurExp(c.getInt(
-                        c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_EXP)));
-                newChar.setMoney(c.getInt(
-                        c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_MONEY)));
+                Character newChar = new CharacterBuilder()
+                        .id(c.getInt(c.getColumnIndex("id")))
+                        .playerName(c.getString(c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_PLAYER_NAME)))
+                        .className(c.getString(c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_CLASS_NAME)))
+                        .level(c.getInt(c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_LEVEL)))
+                        .exp(c.getInt(c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_EXP)))
+                        .money(c.getInt(c.getColumnIndex(PlayerContract.PlayerEntry.COLUMN_NAME_MONEY)))
+                        .build();
 
                 //try to grab the scenario that the character has stored
                 String index = String.valueOf(c.getInt(
@@ -96,18 +78,13 @@ public class DBHandler {
                 //only unpack the scenario if there's one saved, if there isn't one saved then
                 //this character has never played a scenario
                 if (scenCursor.moveToFirst() && scenCursor.getCount() == 1) {
-                    Scenario newScen = new Scenario(newChar.getMaxHealth(), 0, 0);
-
-                    newScen.setId(scenCursor.getInt(
-                            scenCursor.getColumnIndex("id")));
-                    newScen.setHealth(scenCursor.getInt(
-                            scenCursor.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_HEALTH)));
-                    newScen.setExp(scenCursor.getInt(
-                            scenCursor.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_EXP)));
-                    newScen.setMoneyTokens(scenCursor.getInt(
-                            scenCursor.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_MONEY_TOKENS)));
-                    newScen.setLevel(scenCursor.getInt(
-                            scenCursor.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_LEVEL)));
+                    Scenario newScen = new ScenarioBuilder()
+                            .id(scenCursor.getInt(scenCursor.getColumnIndex("id")))
+                            .level(scenCursor.getInt(scenCursor.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_LEVEL)))
+                            .health(scenCursor.getInt(scenCursor.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_HEALTH)))
+                            .exp(scenCursor.getInt(scenCursor.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_EXP)))
+                            .moneyTokens(scenCursor.getInt(scenCursor.getColumnIndex(PlayerContract.ScenarioEntry.COLUMN_NAME_MONEY_TOKENS)))
+                            .build();
 
                     newChar.setCurrentScenario(newScen);
                 }
@@ -155,5 +132,28 @@ public class DBHandler {
 
         db.delete(PlayerContract.ScenarioEntry.TABLE_NAME, "id = ?", new String[]{String.valueOf(scenId)});
         db.delete(PlayerContract.PlayerEntry.TABLE_NAME, "id = ?", new String[]{String.valueOf(charId)});
+    }
+
+    private ContentValues packupCharacter(Character inChar) {
+        ContentValues charVals = new ContentValues();
+
+        charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_PLAYER_NAME, inChar.getPlayerName());
+        charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_CLASS_NAME, inChar.getClassName().toString());
+        charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_LEVEL, inChar.getLevel());
+        charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_EXP, inChar.getCurExp());
+        charVals.put(PlayerContract.PlayerEntry.COLUMN_NAME_MONEY, inChar.getMoney());
+
+        return charVals;
+    }
+
+    private ContentValues packupScenario(Scenario inScen) {
+        ContentValues scenVals = new ContentValues();
+
+        scenVals.put(PlayerContract.ScenarioEntry.COLUMN_NAME_LEVEL, inScen.getLevel());
+        scenVals.put(PlayerContract.ScenarioEntry.COLUMN_NAME_HEALTH, inScen.getHealth());
+        scenVals.put(PlayerContract.ScenarioEntry.COLUMN_NAME_EXP, inScen.getExp());
+        scenVals.put(PlayerContract.ScenarioEntry.COLUMN_NAME_MONEY_TOKENS, inScen.getMoneyTokens());
+
+        return scenVals;
     }
 }

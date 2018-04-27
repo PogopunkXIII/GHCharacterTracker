@@ -19,11 +19,11 @@ public class MainActivity extends ListActivity {
     private static final int NEW_CHARACTER_REQUEST_CODE = 0;
     private static final int EXISTING_CHARACTER_REQUEST_CODE = 1;
 
-    Character savedChar, charToDelete = null;
-    ArrayList<Character> characters = new ArrayList<>();
-    ArrayAdapter<Character> adapter;
-    DBHandler dbHandler;
-    boolean delete = false;
+    private Character savedChar, charToDelete = null;
+    private ArrayList<Character> characters = new ArrayList<>();
+    private ArrayAdapter<Character> adapter;
+    private DBHandler dbHandler;
+    private boolean delete = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +118,9 @@ public class MainActivity extends ListActivity {
                 break;
             case EXISTING_CHARACTER_REQUEST_CODE:
                 if (resultCode == Activity.RESULT_OK) { saveCharacter(data); }
+                break;
+            default:
+                //TODO: Character sheet returned an unexpected request code
                 break;
         }
     }

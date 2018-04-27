@@ -5,9 +5,9 @@ package ghcharactertracker.com.ghcharactertracker;
  */
 
 public class CharClass {
-    ClassName name;
-    int[] healthVals;
-    int[] lvlUpVals;
+    private ClassName name;
+    private int[] healthVals;
+    private int[] lvlUpVals;
 
     public CharClass(ClassName name) {
         this.name = name;

@@ -19,9 +19,9 @@ public class ScenarioActivity extends AppCompatActivity {
     public static final String SCENARIO = "com.ghcharactertracker.ghcharactertracker.SCENARIO";
     public static final String SCENARIO_COMPLETE = "com.ghcharactertracker.ghcharactertracker.SCENARIO_COMPLETE";
     public static final String SCENARIO_SUCCESSFUL = "com.ghcharactertracker.ghcharactertracker.SCENARIO_SUCCESSFUL";
-    EditText levelText, healthText, expText, moneyText;
-    Scenario scenario;
-    DBHandler dbHandler;
+    private EditText levelText, healthText, expText, moneyText;
+    private Scenario scenario;
+    private DBHandler dbHandler;
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -206,10 +206,6 @@ public class ScenarioActivity extends AppCompatActivity {
         }
 
         boolean scenSucc = scenarioSuccessful.isChecked();
-        //int scenLvl = Integer.parseInt(scenarioLvl.getText().toString());
-
-        //setting the level will calculate
-        //scenario.setLevel(scenLvl);
 
         Intent scenarioResult = new Intent();
 

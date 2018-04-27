@@ -21,10 +21,10 @@ public class CharacterActivity extends AppCompatActivity {
 
     private static final int SCENARIO_REQUEST_CODE = 0;
 
-    Character character;
-    EditText playerName, playerLevel, playerCurExp, playerMaxHealth, playerNextLvlExp, playerMoney;
-    Spinner classNameSpinner;
-    DBHandler dbHandler;
+    private Character character;
+    private EditText playerName, playerLevel, playerCurExp, playerMaxHealth, playerNextLvlExp, playerMoney;
+    private Spinner classNameSpinner;
+    private DBHandler dbHandler;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

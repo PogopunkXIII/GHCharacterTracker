@@ -43,9 +43,9 @@ public class Character implements Parcelable{
     }
 
     public void setLevel(int level) {
-        this.setLevel(level);
-        this.setMaxHealth(this.charClass.getMaxHealth(this.getLevel()));
-        this.setNextLevelExp(this.charClass.getLvlUpVal(this.getLevel());
+        this.level = level;
+        this.setMaxHealth(this.charClass.getMaxHealthForLvl(this.getLevel()));
+        this.setNextLevelExp(this.charClass.getLvlUpExp(this.getLevel()));
     }
 
     public int getMaxHealth() {
@@ -84,16 +84,10 @@ public class Character implements Parcelable{
 
     public void setId(long id) { this.id = id; }
 
-    /*
-    public long getScenId() { return scenId; }
-
-    public void setScenId(long scenId) { this.scenId = scenId; }
-    */
-
     public void setClassName(ClassName className) {
         charClass = new CharClass(className);
-        this.nextLevelExp = charClass.getLvlUpVal(this.level);
-        this.maxHealth = charClass.getMaxHealth(this.level);
+        this.setNextLevelExp(charClass.getLvlUpExp(this.getLevel()));
+        this.setMaxHealth(charClass.getMaxHealthForLvl(this.getLevel()));
     }
 
     public void setClassName(String name) {
@@ -120,7 +114,7 @@ public class Character implements Parcelable{
     @Override
     public void writeToParcel(Parcel out, int flags) {
         out.writeString(playerName);
-        out.writeString(charClass.getName().toString());
+        out.writeString(charClass.getClassName().toString());
         out.writeLong(id);
         out.writeInt(level);
         out.writeInt(curExp);

@@ -119,6 +119,9 @@ public class MainActivity extends ListActivity {
             case EXISTING_CHARACTER_REQUEST_CODE:
                 if (resultCode == Activity.RESULT_OK) { saveCharacter(data); }
                 break;
+            default:
+                //TODO: Character sheet returned an unexpected request code
+                break;
         }
     }
 

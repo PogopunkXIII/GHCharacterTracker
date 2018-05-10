@@ -6,57 +6,51 @@
     xmlns:fab="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/char_class_fam"
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|start"
-        android:layout_margin="16dp"
-        android:clickable="true"
-        android:onClick="expandMenu"
-        fab:fab_icon="@drawable/ic_brute_black"
-        app:elevation="4dp">
+        android:layout_gravity="top|left"
+        android:layout_marginTop="12dp"
+        android:elevation="6dp"
+        fab:fab_size="normal"
+        fab:menu_labels_position="right"
+        fab:menu_labels_singleLine="true"
+        fab:menu_openDirection="down">
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
+        <com.github.clans.fab.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_icon="@drawable/ic_scoundrel_black"
-            fab:fab_size="mini"/>
+            android:src="@drawable/ic_brute_black_36"
+            fab:fab_label="brute"
+            fab:fab_size="mini" />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
+        <com.github.clans.fab.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            fab:fab_icon="@drawable/ic_tinkerer_black"
-            fab:fab_size="mini"/>
+            android:src="@drawable/ic_brute_black_36"
+            fab:fab_label="brute"
+            fab:fab_size="mini" />
 
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+        <com.github.clans.fab.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_brute_black_36"
+            fab:fab_label="brute"
+            fab:fab_size="mini" />
+
+    </com.github.clans.fab.FloatingActionMenu>
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/char_class_fam"
-        android:layout_alignTop="@+id/char_class_fam"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
-        android:layout_toEndOf="@+id/char_class_fam"
-        android:layout_toRightOf="@+id/char_class_fam"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/menu_down"
+        android:layout_marginEnd="30dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name" />
-
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editText3"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/editText3"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:ems="10"
-        android:inputType="number" />
 
 
 </RelativeLayout>

@@ -28,12 +28,12 @@ public class CharacterActivity extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.character_sheet);
+        setContentView(R.layout.character_sheet_2);
 
         Intent intent = getIntent();
         character = (Character) intent.getParcelableExtra(MainActivity.CHARACTER_INPUT);
-        //character = new Character(new CharClass(ClassName.Brute));
 
+        /*
         classNameSpinner = (Spinner) findViewById(R.id.classNameSpinner);
         classNameSpinner.setAdapter(new ArrayAdapter<ClassName>(this,
                 android.R.layout.simple_spinner_item,
@@ -46,13 +46,16 @@ public class CharacterActivity extends AppCompatActivity {
         playerNextLvlExp = (EditText) findViewById(R.id.playerNextLvlExp);
         playerMoney = (EditText) findViewById(R.id.playerCurrentMoney);
 
+
         dbHandler = DBHandler.getDbHandler(this);
 
         addSpinnerWatcher();
         addTextWatchers();
         updateUI();
+        */
     }
 
+    /*
     private void updateModelClassName(ClassName className) {
         if (className != character.getClassName()) {
             character.setClassName(className);
@@ -272,6 +275,7 @@ public class CharacterActivity extends AppCompatActivity {
             }
         });
     }
+    */
 
     @Override
     public void onBackPressed() {

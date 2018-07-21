@@ -33,8 +33,8 @@ public class CharacterActivity extends AppCompatActivity {
         Intent intent = getIntent();
         character = (Character) intent.getParcelableExtra(MainActivity.CHARACTER_INPUT);
 
+        //classNameSpinner = (Spinner) findViewById(R.id.classNameSpinner);
         /*
-        classNameSpinner = (Spinner) findViewById(R.id.classNameSpinner);
         classNameSpinner.setAdapter(new ArrayAdapter<ClassName>(this,
                 android.R.layout.simple_spinner_item,
                 ClassName.values()));
@@ -55,7 +55,7 @@ public class CharacterActivity extends AppCompatActivity {
         */
     }
 
-    /*
+/*
     private void updateModelClassName(ClassName className) {
         if (className != character.getClassName()) {
             character.setClassName(className);
@@ -275,10 +275,10 @@ public class CharacterActivity extends AppCompatActivity {
             }
         });
     }
-    */
+*/
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed(){
         packupCharacterData();
     }
 

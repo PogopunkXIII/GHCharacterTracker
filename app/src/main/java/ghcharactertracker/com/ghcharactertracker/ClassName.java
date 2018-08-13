@@ -10,7 +10,10 @@ public enum ClassName {
     Mindthief("Mindthief"),
     Spellweaver("Spellweaver"),
     Tinkerer("Tinkerer"),
-    Cragheart("Cragheart");
+    Cragheart("Cragheart"),
+    Quartermaster("Quartermaster"),
+    Soothesinger("Soothesinger"),
+    Elementalist("Elementalist");
 
     private String value;
 

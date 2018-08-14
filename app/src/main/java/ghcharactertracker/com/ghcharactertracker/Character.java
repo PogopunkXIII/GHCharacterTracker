@@ -158,7 +158,7 @@ public class Character implements Parcelable{
     };
 
     public void addExp(int scenExp) {
-        this.curExp += scenExp;
+        this.setCurExp( scenExp + this.getCurExp());
     }
 
     public void addMoney(int scenMoney) { this.money += scenMoney; }

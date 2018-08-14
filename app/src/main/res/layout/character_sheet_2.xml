@@ -6,73 +6,99 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/menu_down"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|left"
-        android:layout_marginTop="12dp"
-        android:elevation="6dp"
-        fab:fab_size="normal"
-        fab:menu_labels_position="right"
-        fab:menu_labels_singleLine="true"
-        fab:menu_openDirection="down"
-        fab:menu_icon="@drawable/ic_brute_black_36">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-        <com.github.clans.fab.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_spears_black_36"
-            fab:fab_size="mini" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-        <com.github.clans.fab.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_tinkerer_black_36"
-            fab:fab_size="mini" />
+            <com.github.clans.fab.FloatingActionMenu
+                android:id="@+id/menu_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|left"
+                android:layout_marginTop="12dp"
+                android:elevation="6dp"
+                fab:fab_size="normal"
+                fab:menu_labels_position="right"
+                fab:menu_labels_singleLine="true"
+                fab:menu_openDirection="down"
+                fab:menu_icon="@drawable/ic_brute_black_36">
 
-        <com.github.clans.fab.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_mindthief_black_36"
-            fab:fab_size="mini" />
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_triforce_black_36"
+                    fab:fab_size="mini" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_spellweaver_black_36"
-            fab:fab_size="mini" />
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_music_notes_black_36"
+                    fab:fab_size="mini" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_cragheart_black_36"
-            fab:fab_size="mini" />
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_spears_black_36"
+                    fab:fab_size="mini" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_scoundrel_black_36"
-            fab:fab_size="mini" />
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_tinkerer_black_36"
+                    fab:fab_size="mini" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_brute_black_36"
-            fab:fab_size="mini" />
-    </com.github.clans.fab.FloatingActionMenu>
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_mindthief_black_36"
+                    fab:fab_size="mini" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/menu_down"
-        android:layout_marginEnd="30dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:selectAllOnFocus="true"
-        android:text="Name" />
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_spellweaver_black_36"
+                    fab:fab_size="mini" />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_cragheart_black_36"
+                    fab:fab_size="mini" />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_scoundrel_black_36"
+                    fab:fab_size="mini" />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_brute_black_36"
+                    fab:fab_size="mini" />
+            </com.github.clans.fab.FloatingActionMenu>
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/menu_down"
+                android:layout_marginEnd="30dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="true"
+                android:text="Name" />
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
 
 
 </RelativeLayout>

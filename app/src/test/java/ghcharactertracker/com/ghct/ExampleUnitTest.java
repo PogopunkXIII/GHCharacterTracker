@@ -1,4 +1,4 @@
-package ghcharactertracker.com.ghcharactertracker;
+package ghcharactertracker.com.ghct;
 
 import org.junit.Test;
 

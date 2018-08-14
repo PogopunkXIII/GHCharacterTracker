@@ -1,4 +1,4 @@
-package ghcharactertracker.com.ghcharactertracker;
+package ghcharactertracker.com.ghct;
 
 /**
  * Created by jesse.mailhot on 3/6/2018.

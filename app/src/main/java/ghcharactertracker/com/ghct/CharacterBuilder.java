@@ -1,4 +1,4 @@
-package ghcharactertracker.com.ghcharactertracker;
+package ghcharactertracker.com.ghct;
 
 public class CharacterBuilder {
     private String playerName, className;

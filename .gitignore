@@ -108,3 +108,5 @@ Thumbs.db
 
 #virtual machine logs
 hs_err_pid*
+
+.ideas/caches/build_file_checksum.ser

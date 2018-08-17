@@ -1,4 +1,4 @@
-package ghcharactertracker.com.ghcharactertracker;
+package ghcharactertracker.com.ghct;
 
 public class ScenarioBuilder {
     int id, level, health, exp, mTokens;

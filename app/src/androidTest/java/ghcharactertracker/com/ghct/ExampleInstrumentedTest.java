@@ -1,4 +1,4 @@
-package ghcharactertracker.com.ghcharactertracker;
+package ghcharactertracker.com.ghct;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

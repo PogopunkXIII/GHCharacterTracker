@@ -27,5 +27,4 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     api 'com.github.clans:fab:1.6.4'
     api 'com.android.support:design:26.1.0'
-
 }

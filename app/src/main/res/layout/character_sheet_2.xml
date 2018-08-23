@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="fill_parent"
+    <ghcharactertracker.com.ghct.customControls.LockableScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <com.github.clans.fab.FloatingActionMenu
-                android:id="@+id/menu_down"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|left"
-                android:layout_marginTop="12dp"
-                android:elevation="6dp"
-                fab:fab_size="normal"
-                fab:menu_labels_position="right"
-                fab:menu_labels_singleLine="true"
-                fab:menu_openDirection="down"
-                fab:menu_icon="@drawable/ic_brute_black_36">
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/classSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_marginTop="12dp"
+            android:elevation="6dp"
+            fab:fab_size="normal"
+            fab:menu_icon="@drawable/ic_brute_black_36"
+            fab:menu_labels_position="right"
+            fab:menu_labels_singleLine="true"
+            fab:menu_openDirection="down">
 
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
@@ -80,25 +77,141 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_brute_black_36"
                     fab:fab_size="mini" />
-            </com.github.clans.fab.FloatingActionMenu>
+        </com.github.clans.fab.FloatingActionMenu>
+    </ghcharactertracker.com.ghct.customControls.LockableScrollView>
 
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignTop="@+id/menu_down"
-                android:layout_marginEnd="30dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:selectAllOnFocus="true"
-                android:text="Name" />
+    <EditText
+        android:id="@+id/playerName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        </RelativeLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Lvl:"
+        app:layout_constraintBaseline_toBaselineOf="@+id/playerName"
+        app:layout_constraintStart_toEndOf="@+id/playerName" />
 
-    </android.support.v4.widget.NestedScrollView>
+    <EditText
+        android:id="@+id/playerLevel"
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView2" />
 
+    <EditText
+        android:id="@+id/playerMaxHealth"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textView5" />
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Max Health:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerName" />
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="XP:"
+        app:layout_constraintBaseline_toBaselineOf="@+id/playerMaxHealth"
+        app:layout_constraintStart_toEndOf="@+id/playerMaxHealth" />
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/playerCurrentExp"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
+        app:layout_constraintStart_toEndOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/"
+        app:layout_constraintBaseline_toBaselineOf="@+id/playerCurrentExp"
+        app:layout_constraintStart_toEndOf="@+id/playerCurrentExp" />
+
+    <EditText
+        android:id="@+id/playerNextLvlExp"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView10" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/newScenario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:clickable="true"
+        android:onClick="newScenario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/letter_s" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Money:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerMaxHealth" />
+
+    <EditText
+        android:id="@+id/playerCurrentMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/textView11" />
+
+</android.support.constraint.ConstraintLayout>

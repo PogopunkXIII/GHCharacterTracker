@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.github.clans.fab.FloatingActionMenu;
+
 /**
  * Created by jesse.mailhot on 3/6/2018.
  */
@@ -23,7 +25,7 @@ public class CharacterActivity extends AppCompatActivity {
 
     private Character character;
     private EditText playerName, playerLevel, playerCurExp, playerMaxHealth, playerNextLvlExp, playerMoney;
-    private Spinner classNameSpinner;
+    private FloatingActionMenu playerClassMenu;
     private DBHandler dbHandler;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -33,11 +35,7 @@ public class CharacterActivity extends AppCompatActivity {
         Intent intent = getIntent();
         character = (Character) intent.getParcelableExtra(MainActivity.CHARACTER_INPUT);
 
-        //classNameSpinner = (Spinner) findViewById(R.id.classNameSpinner);
-        /*
-        classNameSpinner.setAdapter(new ArrayAdapter<ClassName>(this,
-                android.R.layout.simple_spinner_item,
-                ClassName.values()));
+        playerClassMenu = (FloatingActionMenu) findViewById(R.id.classSelect);
 
         playerName = (EditText) findViewById(R.id.playerName);
         playerLevel = (EditText) findViewById(R.id.playerLevel);
@@ -49,13 +47,17 @@ public class CharacterActivity extends AppCompatActivity {
 
         dbHandler = DBHandler.getDbHandler(this);
 
-        addSpinnerWatcher();
         addTextWatchers();
+        //addFAMWaters();
         updateUI();
-        */
     }
 
-/*
+    /*
+    private void addFAMWaters() {
+        playerClassMenu;
+    }
+    */
+
     private void updateModelClassName(ClassName className) {
         if (className != character.getClassName()) {
             character.setClassName(className);
@@ -114,8 +116,6 @@ public class CharacterActivity extends AppCompatActivity {
         playerMaxHealth.setText(Integer.toString(character.getMaxHealth()));
         playerNextLvlExp.setText(Integer.toString(character.getNextLevelExp()));
         playerMoney.setText(Integer.toString(character.getMoney()));
-
-        classNameSpinner.setSelection(ClassName.valueOf(character.getClassName().toString()).ordinal());
     }
 
     private void unpackScenarioData(Intent data) {
@@ -177,17 +177,6 @@ public class CharacterActivity extends AppCompatActivity {
                 if (resultCode == Activity.RESULT_OK) { unpackScenarioData(data); };
                 break;
         }
-    }
-
-    private void addSpinnerWatcher() {
-        classNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                updateModelClassName(ClassName.values()[position]);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
-        });
     }
 
     private void addTextWatchers() {
@@ -275,7 +264,7 @@ public class CharacterActivity extends AppCompatActivity {
             }
         });
     }
-*/
+
 
     @Override
     public void onBackPressed(){

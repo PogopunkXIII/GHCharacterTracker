@@ -7,7 +7,7 @@
     android:layout_height="fill_parent">
 
     <ghcharactertracker.com.ghct.customControls.LockableScrollView
-        android:id="@+id/nestedScrollView"
+        android:id="@+id/famScroller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -28,54 +28,63 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_triforce_black_36"
+                    android:id="@+id/triforceButton"
                     fab:fab_size="mini" />
 
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_music_notes_black_36"
+                    android:id="@+id/musicNoteButton"
                     fab:fab_size="mini" />
 
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_spears_black_36"
+                    android:id="@+id/spearsButton"
                     fab:fab_size="mini" />
 
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_tinkerer_black_36"
+                    android:id="@+id/tinkererButton"
                     fab:fab_size="mini" />
 
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_mindthief_black_36"
+                    android:id="@+id/mindthiefButton"
                     fab:fab_size="mini" />
 
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_spellweaver_black_36"
+                    android:id="@+id/spellweaverButton"
                     fab:fab_size="mini" />
 
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_cragheart_black_36"
+                    android:id="@+id/cragheartButton"
                     fab:fab_size="mini" />
 
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_scoundrel_black_36"
+                    android:id="@+id/scoundrelButton"
                     fab:fab_size="mini" />
 
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_brute_black_36"
+                    android:id="@+id/bruteButton"
                     fab:fab_size="mini" />
         </com.github.clans.fab.FloatingActionMenu>
     </ghcharactertracker.com.ghct.customControls.LockableScrollView>
@@ -113,6 +122,7 @@
         android:layout_marginRight="8dp"
         android:ems="10"
         android:inputType="number"
+        android:textAlignment="center"
         android:selectAllOnFocus="true"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,6 +137,7 @@
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="number"
+        android:textAlignment="center"
         android:selectAllOnFocus="true"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView5" />
@@ -158,6 +169,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
+        android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
         app:layout_constraintStart_toEndOf="@+id/textView9" />
 
@@ -177,6 +189,7 @@
         android:layout_marginRight="8dp"
         android:ems="10"
         android:inputType="number"
+        android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView10" />
@@ -211,6 +224,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
+        android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
         app:layout_constraintStart_toEndOf="@+id/textView11" />
 

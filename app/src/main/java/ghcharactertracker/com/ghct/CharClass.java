@@ -23,6 +23,7 @@ public class CharClass {
         switch(name) {
             case Brute:
             case Cragheart:
+            case Quartermaster:
                 vals = new int[]{0, 10, 12, 14, 16, 18, 20, 22, 24, 26};
                 break;
             case Scoundrel:

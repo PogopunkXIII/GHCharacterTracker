@@ -165,6 +165,6 @@ public class Character implements Parcelable{
 
     @Override
     public String toString() {
-        return playerName + "\n" + charClass.getClassName();
+        return playerName;
     }
 }

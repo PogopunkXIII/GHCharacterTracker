@@ -4,7 +4,9 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    style="@style/AppTheme"
+    android:background="@color/colorDarkPrimary">
 
     <ghcharactertracker.com.ghct.customControls.LockableScrollView
         android:id="@+id/famScroller"
@@ -18,6 +20,8 @@
             android:layout_gravity="top|left"
             android:layout_marginTop="12dp"
             android:elevation="6dp"
+            fab:menu_colorNormal="@color/colorDarkAccent"
+            fab:menu_colorPressed="@color/colorDarkAccentLighter"
             fab:fab_size="normal"
             fab:menu_icon="@drawable/ic_brute_black_36"
             fab:menu_labels_position="right"
@@ -27,6 +31,8 @@
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/colorDarkAccent"
+                    fab:fab_colorPressed="@color/colorDarkAccentLighter"
                     android:src="@drawable/ic_triforce_black_36"
                     android:id="@+id/triforceButton"
                     fab:fab_size="mini" />
@@ -34,6 +40,8 @@
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/colorDarkAccent"
+                    fab:fab_colorPressed="@color/colorDarkAccentLighter"
                     android:src="@drawable/ic_music_notes_black_36"
                     android:id="@+id/musicNoteButton"
                     fab:fab_size="mini" />
@@ -41,6 +49,8 @@
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/colorDarkAccent"
+                    fab:fab_colorPressed="@color/colorDarkAccentLighter"
                     android:src="@drawable/ic_spears_black_36"
                     android:id="@+id/spearsButton"
                     fab:fab_size="mini" />
@@ -48,6 +58,8 @@
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/colorDarkAccent"
+                    fab:fab_colorPressed="@color/colorDarkAccentLighter"
                     android:src="@drawable/ic_tinkerer_black_36"
                     android:id="@+id/tinkererButton"
                     fab:fab_size="mini" />
@@ -55,6 +67,8 @@
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/colorDarkAccent"
+                    fab:fab_colorPressed="@color/colorDarkAccentLighter"
                     android:src="@drawable/ic_mindthief_black_36"
                     android:id="@+id/mindthiefButton"
                     fab:fab_size="mini" />
@@ -62,6 +76,8 @@
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/colorDarkAccent"
+                    fab:fab_colorPressed="@color/colorDarkAccentLighter"
                     android:src="@drawable/ic_spellweaver_black_36"
                     android:id="@+id/spellweaverButton"
                     fab:fab_size="mini" />
@@ -69,6 +85,8 @@
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/colorDarkAccent"
+                    fab:fab_colorPressed="@color/colorDarkAccentLighter"
                     android:src="@drawable/ic_cragheart_black_36"
                     android:id="@+id/cragheartButton"
                     fab:fab_size="mini" />
@@ -76,6 +94,8 @@
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/colorDarkAccent"
+                    fab:fab_colorPressed="@color/colorDarkAccentLighter"
                     android:src="@drawable/ic_scoundrel_black_36"
                     android:id="@+id/scoundrelButton"
                     fab:fab_size="mini" />
@@ -83,6 +103,8 @@
                 <com.github.clans.fab.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/colorDarkAccent"
+                    fab:fab_colorPressed="@color/colorDarkAccentLighter"
                     android:src="@drawable/ic_brute_black_36"
                     android:id="@+id/bruteButton"
                     fab:fab_size="mini" />
@@ -101,6 +123,7 @@
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:text="Name"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -111,6 +134,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="Lvl:"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintBaseline_toBaselineOf="@+id/playerName"
         app:layout_constraintStart_toEndOf="@+id/playerName" />
 
@@ -124,6 +148,7 @@
         android:inputType="number"
         android:textAlignment="center"
         android:selectAllOnFocus="true"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -139,6 +164,7 @@
         android:inputType="number"
         android:textAlignment="center"
         android:selectAllOnFocus="true"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView5" />
 
@@ -150,6 +176,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:text="Max Health:"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerName" />
 
@@ -160,6 +187,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="XP:"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintBaseline_toBaselineOf="@+id/playerMaxHealth"
         app:layout_constraintStart_toEndOf="@+id/playerMaxHealth" />
 
@@ -170,6 +198,7 @@
         android:ems="10"
         android:inputType="number"
         android:textAlignment="center"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
         app:layout_constraintStart_toEndOf="@+id/textView9" />
 
@@ -178,6 +207,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="/"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintBaseline_toBaselineOf="@+id/playerCurrentExp"
         app:layout_constraintStart_toEndOf="@+id/playerCurrentExp" />
 
@@ -190,6 +220,7 @@
         android:ems="10"
         android:inputType="number"
         android:textAlignment="center"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView10" />
@@ -203,6 +234,7 @@
         android:layout_marginRight="16dp"
         android:clickable="true"
         android:onClick="newScenario"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/letter_s" />
@@ -215,6 +247,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:text="Money:"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerMaxHealth" />
 
@@ -225,6 +258,7 @@
         android:ems="10"
         android:inputType="number"
         android:textAlignment="center"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
         app:layout_constraintStart_toEndOf="@+id/textView11" />
 

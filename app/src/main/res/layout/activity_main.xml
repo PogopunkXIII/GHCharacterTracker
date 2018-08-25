@@ -10,6 +10,9 @@
         android:id="@android:id/list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="@color/colorDarkPrimary"
+        android:textColor="@color/darkTextColor"
+        style="@style/AppTheme"
         android:drawSelectorOnTop="false"/>
 
     <android.support.design.widget.FloatingActionButton

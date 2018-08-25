@@ -7,9 +7,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -32,9 +34,19 @@ public class MainActivity extends ListActivity {
 
         ListView charList = findViewById(android.R.id.list);
 
-        adapter = new ArrayAdapter<>(this,
+        adapter = new ArrayAdapter<Character>(this,
                 android.R.layout.simple_list_item_1,
-                characters);
+                characters) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+                tv.setTextColor(getResources().getColor(R.color.darkTextColor));
+
+                return view;
+            }
+        };
         setListAdapter(adapter);
 
         charList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

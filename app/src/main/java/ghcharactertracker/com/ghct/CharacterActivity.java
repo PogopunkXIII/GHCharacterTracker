@@ -252,6 +252,7 @@ public class CharacterActivity extends AppCompatActivity {
         playerMaxHealth.setText(Integer.toString(character.getMaxHealth()));
         playerNextLvlExp.setText(Integer.toString(character.getNextLevelExp()));
         playerMoney.setText(Integer.toString(character.getMoney()));
+        updateFAMIcon(character.getClassName());
     }
 
     private void unpackScenarioData(Intent data) {

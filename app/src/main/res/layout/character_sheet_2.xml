@@ -33,6 +33,15 @@
                     android:layout_height="wrap_content"
                     fab:fab_colorNormal="@color/colorDarkAccent"
                     fab:fab_colorPressed="@color/colorDarkAccentLighter"
+                    android:src="@drawable/ic_butterfly_black_36"
+                    android:id="@+id/butterflyButton"
+                    fab:fab_size="mini" />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/colorDarkAccent"
+                    fab:fab_colorPressed="@color/colorDarkAccentLighter"
                     android:src="@drawable/ic_triforce_black_36"
                     android:id="@+id/triforceButton"
                     fab:fab_size="mini" />

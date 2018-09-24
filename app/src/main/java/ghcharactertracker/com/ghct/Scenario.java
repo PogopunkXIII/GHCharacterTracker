@@ -3,6 +3,8 @@ package ghcharactertracker.com.ghct;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 /**
  * Created by jesse.mailhot on 3/6/2018.
  */
@@ -11,17 +13,24 @@ public class Scenario implements Parcelable{
     private int level, health, exp, moneyTokens = 0;
     private int totalExp, bonusExp, lootedMoney, moneyMultiplier = 0;
     private long id = -1;
+    private ArrayList<Summon> summons;
 
     public Scenario(int health, int exp, int money) {
         this.health = health;
         this.exp = exp;
         this.moneyTokens = money;
+        this.summons = new ArrayList<>();
+
+        summons = null;
     }
 
     public Scenario() {
         this.health = 0;
         this.exp = 0;
         this.moneyTokens = 0;
+        this.summons = new ArrayList<>();
+
+        summons = null;
     }
 
     public void incHealth() {
@@ -72,6 +81,14 @@ public class Scenario implements Parcelable{
         this.updateLootedMoney();
     }
 
+    public ArrayList<Summon> getSummons() {
+        return summons;
+    }
+
+    public void setSummons(ArrayList<Summon> summons) {
+        this.summons = summons;
+    }
+
     public int getLevel() {
         return level;
     }
@@ -99,6 +116,16 @@ public class Scenario implements Parcelable{
     public int getLootedMoney() { return lootedMoney; }
 
     public int getTotalExp() { return totalExp; }
+
+    public void addSummon(){
+        Summon temp = null;
+        temp = new Summon("name" + summons.size(), 0);
+        summons.add(temp);
+    }
+
+    public void addSummon(Summon in){
+        summons.add(in);
+    }
 
     public static int getScenarioMoneyMultiplier(int level) {
         switch (level) {

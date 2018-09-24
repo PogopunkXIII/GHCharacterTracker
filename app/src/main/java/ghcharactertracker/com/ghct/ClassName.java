@@ -13,7 +13,8 @@ public enum ClassName {
     Cragheart("Cragheart"),
     Quartermaster("Quartermaster"),
     Soothesinger("Soothesinger"),
-    Elementalist("Elementalist");
+    Elementalist("Elementalist"),
+    BeastTyrant("Beast Tyrant");;
 
     private String value;
 

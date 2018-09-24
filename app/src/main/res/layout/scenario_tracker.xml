@@ -8,6 +8,10 @@
     style="@style/AppTheme"
     android:background="@color/colorDarkPrimary">
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
     <Button
         android:id="@+id/healthSub"
         android:layout_width="wrap_content"
@@ -171,6 +175,25 @@
         app:layout_constraintEnd_toStartOf="@+id/moneyAdd"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/moneySub" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:background="@color/darkTextColor" />
+
+        <Button
+            android:id="@+id/Show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:onClick="showHideBonusCounter"
+            android:text="@string/complete_label"
+            app:layout_constraintBaseline_toBaselineOf="@+id/scenarioLevel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/scenarioSuccessful" />
+
+    </android.support.v4.widget.NestedScrollView>
 
     <Button
         android:id="@+id/scenarioDone"

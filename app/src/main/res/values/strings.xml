@@ -17,4 +17,5 @@
     <string name="complete_label">Done</string>
     <string name="scenario_level_label">Scenario Level</string>
     <string name="name_label">Name</string>
+    <string name="show_hide">Show/Hide(volatile)</string>
 </resources>

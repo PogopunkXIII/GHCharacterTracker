@@ -40,7 +40,7 @@ public class CharacterActivity extends AppCompatActivity {
 
     private Character character;
     private EditText playerName, playerLevel, playerCurExp, playerMaxHealth, playerNextLvlExp, playerMoney;
-    private FloatingActionButton bruteButton, cragheartButton, spellweaverButton, mindthiefButton, scoundrelButton, tinkererButton, spearsButton, musicNoteButton, triforceButton;
+    private FloatingActionButton bruteButton, cragheartButton, spellweaverButton, mindthiefButton, scoundrelButton, tinkererButton, spearsButton, musicNoteButton, triforceButton, butterflyButton;
     private ArrayList<FloatingActionButton> singleClassButtons;
     private FloatingActionMenu playerClassMenu;
     private LockableScrollView classScroller;
@@ -65,6 +65,7 @@ public class CharacterActivity extends AppCompatActivity {
         spearsButton        = (FloatingActionButton) findViewById(R.id.spearsButton);
         musicNoteButton     = (FloatingActionButton) findViewById(R.id.musicNoteButton);
         triforceButton      = (FloatingActionButton) findViewById(R.id.triforceButton);
+        butterflyButton     = (FloatingActionButton) findViewById(R.id.butterflyButton);
 
         singleClassButtons = new ArrayList<FloatingActionButton>();
 
@@ -77,6 +78,7 @@ public class CharacterActivity extends AppCompatActivity {
         singleClassButtons.add(spearsButton);
         singleClassButtons.add(musicNoteButton);
         singleClassButtons.add(triforceButton);
+        singleClassButtons.add(butterflyButton);
 
         playerName = (EditText) findViewById(R.id.playerName);
         playerLevel = (EditText) findViewById(R.id.playerLevel);
@@ -133,6 +135,9 @@ public class CharacterActivity extends AppCompatActivity {
                 case R.id.triforceButton:
                     newClass = ClassName.Elementalist;
                     break;
+                case R.id.butterflyButton:
+                    newClass = ClassName.BeastTyrant;
+                    break;
             }
 
             updateModelClassName(newClass);
@@ -172,6 +177,9 @@ public class CharacterActivity extends AppCompatActivity {
                     break;
                 case Elementalist:
                     icon = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_triforce_black_36, null);
+                    break;
+                case BeastTyrant:
+                    icon = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_butterfly_black_36, null);
                     break;
             }
 

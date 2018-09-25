@@ -34,6 +34,7 @@ public class CharClass {
             case Spellweaver:
             case Elementalist:
             case Soothesinger:
+            case BeastTyrant:
                 vals = new int[]{0, 6, 7, 8, 9, 10, 11, 12, 13, 14};
                 break;
         }

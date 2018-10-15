@@ -22,13 +22,11 @@ public class CharClassUnitTest {
     }
 
     @Test
-    public void BruteTest() {
-        assertEquals(testChar.getClassName(), ClassName.Brute);
+    public void setNameByInteger() {
 
-        int[] bruteHealthValues = CharClass.getHealthValues(testChar.getClassName());
-
-        //for(int i = 0; i < bruteHealthValues.length; i++) {
-        //    checkHealthValues(bruteHealthValues[i], fastHealthVals[i]);
-        //}
+        for(int i = 0; i < ClassName.values().length; i++) {
+            testChar.setName(i);
+            assertEquals(testChar.getClassName(), ClassName.values()[i]);
+        }
     }
 }
